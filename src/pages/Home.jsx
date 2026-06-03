@@ -1,6 +1,7 @@
 import Reveal from '../components/common/Reveal';
 import HeroRobot from '../components/animations/HeroRobot';
 import RotatingHeadline from '../components/animations/RotatingHeadline';
+import RobotAssembly from '../components/animations/RobotAssembly';
 
 export default function Home() {
   return (
@@ -59,9 +60,15 @@ export default function Home() {
           <span className="chip net-test">
             <span className="dot test live"></span>Testnet Live · 11211
           </span>
-          <span className="eyebrow">Powered by Exbotix</span>
+          <span className="chip net-main"><span className="dot"></span>Mainnet · 11311</span>
+          <span className="chip">EVM Equivalent</span>
+          <span className="chip">EXBT Gas Token</span>
+          <span className="chip">Proof of Work</span>
+          <span className="chip">Solidity Ready</span>
         </div>
       </div>
+
+      <RobotAssembly />
 
       <section className="section-pad">
         <div className="wrap">
