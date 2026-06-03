@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import Reveal from '../components/common/Reveal';
 
 const APPS = [
-  { n: "NeuralSwap", c: "ai", g: "⬡", d: "AI-routed DEX aggregator finding the best execution across pools.", s: "Live · Testnet" },
+  { n: "Exbotix Crypto Exchange", c: "cex", g: "⇄", d: "Full-featured centralized exchange with spot trading, advanced order types, and instant settlement on Exbotix.", s: "Live · Mainnet" },
+  { n: "Arbitrage Trading", c: "cex", g: "⟲", d: "Automated arbitrage bot exploiting price differences across exchanges with sub-second execution.", s: "Live · Mainnet" },
+  { n: "NeuralSwap", c: "ai", g: "⬡", d: "AI-routed DEX aggregator finding the best execution across pools.", s: "In build" },
   { n: "AgentVault", c: "ai", g: "◉", d: "Autonomous agent wallets with on-chain spending policies.", s: "In build" },
-  { n: "ExDEX", c: "defi", g: "◈", d: "Native AMM with concentrated liquidity and EXBT incentives.", s: "Live · Testnet" },
+  { n: "ExDEX", c: "defi", g: "◈", d: "Native AMM with concentrated liquidity and EXBT incentives.", s: "In build" },
   { n: "LendBotix", c: "defi", g: "▣", d: "Over-collateralized lending and borrowing markets.", s: "In build" },
   { n: "Perptual", c: "defi", g: "∿", d: "Decentralized perpetuals with up to 20x leverage.", s: "Coming soon" },
-  { n: "ExBridge CEX", c: "cex", g: "⇄", d: "Exchange-grade order books bridged into Exbotix.", s: "In build" },
   { n: "Plaza", c: "social", g: "◎", d: "Creator economy and social graph owned by users.", s: "In build" },
   { n: "RepID", c: "social", g: "◍", d: "Portable on-chain reputation and identity.", s: "Coming soon" },
   { n: "BotixArena", c: "games", g: "▲", d: "On-chain mech battler with true asset ownership.", s: "In build" },

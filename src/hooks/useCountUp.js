@@ -2,10 +2,20 @@ import { useEffect, useRef } from 'react';
 
 export const useCountUp = (target, options = {}) => {
   const ref = useRef(null);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+
+    // If trigger is provided and it's false, don't animate yet
+    if (options.trigger !== undefined && !options.trigger) {
+      return;
+    }
+
+    // If already animated, don't animate again
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
 
     const duration = options.duration || 1600;
     const decimals = options.decimals || 0;
@@ -31,7 +41,7 @@ export const useCountUp = (target, options = {}) => {
     };
 
     requestAnimationFrame(tick);
-  }, [target, options.duration, options.decimals, options.suffix, options.prefix]);
+  }, [target, options.trigger, options.duration, options.decimals, options.suffix, options.prefix]);
 
   return ref;
 };
