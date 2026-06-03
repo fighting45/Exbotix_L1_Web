@@ -4,7 +4,7 @@ import { shortAddress } from '../../utils/helpers';
 import WalletModal from './WalletModal';
 
 export default function WalletButton() {
-  const { connected, address, disconnect, detectWallets } = useWallet();
+  const { connected, address, connect, disconnect, detectWallets } = useWallet();
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {

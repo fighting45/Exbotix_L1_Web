@@ -11,29 +11,19 @@ export const WalletProvider = ({ children }) => {
   const [chainId, setChainId] = useState(null);
   const [walletType, setWalletType] = useState(null);
 
-  // Initialize from localStorage on mount
-  useEffect(() => {
-    const wasConnected = localStorage.getItem("exbt_wallet_connected");
-    const lastWalletType = localStorage.getItem("exbt_wallet_type");
+  const disconnect = useCallback(() => {
+    setProvider(null);
+    setSigner(null);
+    setAddress(null);
+    setChainId(null);
+    setWalletType(null);
 
-    if (wasConnected === "true" && lastWalletType && window.ethereum) {
-      connect(lastWalletType, true);
-    }
+    localStorage.removeItem("exbt_wallet_connected");
+    localStorage.removeItem("exbt_wallet_type");
+    localStorage.removeItem("exbt_addr");
 
-    // Setup event listeners
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", handleAccountsChanged);
-      window.ethereum.on("chainChanged", handleChainChanged);
-      window.ethereum.on("disconnect", handleDisconnect);
-    }
-
-    return () => {
-      if (window.ethereum && window.ethereum.removeListener) {
-        window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
-        window.ethereum.removeListener("chainChanged", handleChainChanged);
-        window.ethereum.removeListener("disconnect", handleDisconnect);
-      }
-    };
+    showToast("Wallet disconnected", "");
+    window.dispatchEvent(new Event("wallet:change"));
   }, []);
 
   const handleAccountsChanged = useCallback((accounts) => {
@@ -45,7 +35,7 @@ export const WalletProvider = ({ children }) => {
       showToast("Account changed", accounts[0].slice(0, 6) + "…" + accounts[0].slice(-4));
       window.dispatchEvent(new Event("wallet:change"));
     }
-  }, [address]);
+  }, [address, disconnect]);
 
   const handleChainChanged = useCallback(() => {
     window.location.reload();
@@ -54,7 +44,7 @@ export const WalletProvider = ({ children }) => {
   const handleDisconnect = useCallback((error) => {
     console.log("Wallet disconnected:", error);
     disconnect();
-  }, []);
+  }, [disconnect]);
 
   const detectWallets = useCallback(() => {
     const wallets = [];
@@ -74,17 +64,66 @@ export const WalletProvider = ({ children }) => {
     return wallets;
   }, []);
 
+  const switchToExbotixMainnet = useCallback(async (currentChainId, currentProvider) => {
+    const mainnet = NETWORKS.mainnet;
+    const activeChainId = currentChainId || chainId;
+
+    if (activeChainId === mainnet.chainId) {
+      return;
+    }
+
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: mainnet.chainId }],
+      });
+
+      showToast("Switched to Exbotix Mainnet", "You're now on Chain ID 11311");
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_addEthereumChain",
+            params: [{
+              chainId: mainnet.chainId,
+              chainName: mainnet.chainName,
+              nativeCurrency: mainnet.nativeCurrency,
+              rpcUrls: mainnet.rpcUrls,
+              blockExplorerUrls: mainnet.blockExplorerUrls,
+            }],
+          });
+
+          showToast("Exbotix Mainnet added", "Network added to your wallet successfully");
+        } catch (addError) {
+          if (addError.code !== 4001) {
+            showToast("Network not added", "You can add it manually from the docs page");
+          }
+        }
+      } else if (switchError.code !== 4001) {
+        showToast("Network switch failed", "");
+      }
+    }
+  }, [chainId]);
+
+  const handleError = useCallback((title, error) => {
+    console.error(title, error);
+
+    const errorMessages = {
+      4001: "Request cancelled",
+      "-32002": "Request already pending - check your wallet",
+      "-32603": "Internal error - try again",
+    };
+
+    const message = errorMessages[error.code] || error.message || "An error occurred";
+    showToast(title, message);
+  }, []);
+
   const connect = useCallback(async (walletType = "metamask", silent = false) => {
     try {
       if (!window.ethereum) {
         if (!silent) {
           showToast("No wallet detected", "Please install MetaMask");
         }
-        return null;
-      }
-
-      if (!window.ethers) {
-        showToast("Loading wallet", "Please wait...");
         return null;
       }
 
@@ -127,64 +166,7 @@ export const WalletProvider = ({ children }) => {
       handleError("Connection failed", error);
       return null;
     }
-  }, []);
-
-  const disconnect = useCallback(() => {
-    setProvider(null);
-    setSigner(null);
-    setAddress(null);
-    setChainId(null);
-    setWalletType(null);
-
-    localStorage.removeItem("exbt_wallet_connected");
-    localStorage.removeItem("exbt_wallet_type");
-    localStorage.removeItem("exbt_addr");
-
-    showToast("Wallet disconnected", "");
-    window.dispatchEvent(new Event("wallet:change"));
-  }, []);
-
-  const switchToExbotixMainnet = useCallback(async (currentChainId, currentProvider) => {
-    const mainnet = NETWORKS.mainnet;
-    const activeChainId = currentChainId || chainId;
-    const activeProvider = currentProvider || provider;
-
-    if (activeChainId === mainnet.chainId) {
-      return;
-    }
-
-    try {
-      await window.ethereum.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: mainnet.chainId }],
-      });
-
-      showToast("Switched to Exbotix Mainnet", "You're now on Chain ID 11311");
-    } catch (switchError) {
-      if (switchError.code === 4902) {
-        try {
-          await window.ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [{
-              chainId: mainnet.chainId,
-              chainName: mainnet.chainName,
-              nativeCurrency: mainnet.nativeCurrency,
-              rpcUrls: mainnet.rpcUrls,
-              blockExplorerUrls: mainnet.blockExplorerUrls,
-            }],
-          });
-
-          showToast("Exbotix Mainnet added", "Network added to your wallet successfully");
-        } catch (addError) {
-          if (addError.code !== 4001) {
-            showToast("Network not added", "You can add it manually from the docs page");
-          }
-        }
-      } else if (switchError.code !== 4001) {
-        showToast("Network switch failed", "");
-      }
-    }
-  }, [chainId, provider]);
+  }, [switchToExbotixMainnet, handleError]);
 
   const addNetwork = useCallback(async (networkKey) => {
     const network = NETWORKS[networkKey];
@@ -210,18 +192,32 @@ export const WalletProvider = ({ children }) => {
     }
   }, []);
 
-  const handleError = useCallback((title, error) => {
-    console.error(title, error);
+  // Setup event listeners
+  useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", handleAccountsChanged);
+      window.ethereum.on("chainChanged", handleChainChanged);
+      window.ethereum.on("disconnect", handleDisconnect);
+    }
 
-    const errorMessages = {
-      4001: "Request cancelled",
-      "-32002": "Request already pending - check your wallet",
-      "-32603": "Internal error - try again",
+    return () => {
+      if (window.ethereum && window.ethereum.removeListener) {
+        window.ethereum.removeListener("accountsChanged", handleAccountsChanged);
+        window.ethereum.removeListener("chainChanged", handleChainChanged);
+        window.ethereum.removeListener("disconnect", handleDisconnect);
+      }
     };
+  }, [handleAccountsChanged, handleChainChanged, handleDisconnect]);
 
-    const message = errorMessages[error.code] || error.message || "An error occurred";
-    showToast(title, message);
-  }, []);
+  // Initialize from localStorage on mount
+  useEffect(() => {
+    const wasConnected = localStorage.getItem("exbt_wallet_connected");
+    const lastWalletType = localStorage.getItem("exbt_wallet_type");
+
+    if (wasConnected === "true" && lastWalletType && window.ethereum) {
+      connect(lastWalletType, true);
+    }
+  }, [connect]);
 
   const value = {
     provider,
