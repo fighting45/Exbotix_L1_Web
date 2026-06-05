@@ -15,10 +15,12 @@ export default function Faucet() {
 
   // Auto-fill address when wallet is connected
   useEffect(() => {
-    if (connected && walletAddress && !useCustomAddress) {
+    if (connected && walletAddress) {
+      // Always use wallet address when wallet is connected (reset custom mode)
+      setUseCustomAddress(false);
       setAddress(walletAddress);
     }
-  }, [connected, walletAddress, useCustomAddress]);
+  }, [connected, walletAddress]);
 
   const handleUseCustomAddress = () => {
     setUseCustomAddress(true);
@@ -69,7 +71,12 @@ export default function Faucet() {
       recordTokenRequest(address);
       // Reset form after 5 seconds
       setTimeout(() => {
-        setAddress('');
+        // If wallet is connected and not using custom address, restore wallet address
+        if (connected && walletAddress && !useCustomAddress) {
+          setAddress(walletAddress);
+        } else {
+          setAddress('');
+        }
         setStatus('idle');
         setMessage('');
         setTxHash('');
