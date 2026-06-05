@@ -8,7 +8,7 @@ export default function FaucetPage() {
       <header className="page-hero">
         <div className="wrap" style={{ textAlign: 'center' }}>
           <Reveal>
-            <div style={{ fontSize: '48px', marginBottom: '16px' }}>🪂</div>
+            <div style={{ fontSize: '96px', marginBottom: '16px' }}>🪂</div>
           </Reveal>
           <Reveal delay={1}>
             <span className="eyebrow" style={{ justifyContent: 'center' }}>Testnet Faucet</span>

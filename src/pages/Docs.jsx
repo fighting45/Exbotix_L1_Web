@@ -165,7 +165,7 @@ export default function Docs() {
             <div className="grid cols-2" style={{ marginTop: '16px', gap: '20px' }}>
               <div className="card" style={{ padding: '24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '24px' }}>🪂</span>
+                  <span style={{ fontSize: '32px' }}>🪂</span>
                   <h3 style={{ fontSize: '18px' }}>Testnet Faucet</h3>
                   <span className="net-badge test">Testnet</span>
                 </div>

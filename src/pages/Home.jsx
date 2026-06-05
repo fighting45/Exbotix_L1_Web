@@ -32,8 +32,8 @@ export default function Home() {
               </svg>
             </a>
             <Link to="/docs" className="btn btn-primary">Start Building</Link>
-            <Link to="/faucet" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '18px' }}>🪂</span>
+            <Link to="/faucet" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', transition: 'none' }}>
+              <span style={{ fontSize: '20px' }}>🪂</span>
               Testnet Airdrop
             </Link>
           </div>
