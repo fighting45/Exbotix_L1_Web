@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Staking from './pages/Staking';
 import Bridge from './pages/Bridge';
 import Docs from './pages/Docs';
+import Whitepaper from './pages/Whitepaper';
 import Tokenomics from './pages/Tokenomics';
 import Mission from './pages/Mission';
 import Ecosystem from './pages/Ecosystem';
@@ -25,6 +26,7 @@ function App() {
             <Route path="bridge" element={<Bridge />} />
             <Route path="faucet" element={<FaucetPage />} />
             <Route path="docs" element={<Docs />} />
+            <Route path="whitepaper" element={<Whitepaper />} />
             <Route path="tokenomics" element={<Tokenomics />} />
             <Route path="mission" element={<Mission />} />
             <Route path="ecosystem" element={<Ecosystem />} />

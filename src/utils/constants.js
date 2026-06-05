@@ -33,6 +33,7 @@ export const NAV_GROUPS = [
     title: "Build",
     items: [
       { href: "/docs", label: "Developer Docs" },
+      { href: "/whitepaper", label: "Whitepaper" },
       { href: "/ecosystem", label: "Ecosystem" },
       { href: "/community", label: "Grants" }
     ]
