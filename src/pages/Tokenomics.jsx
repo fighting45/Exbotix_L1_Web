@@ -66,10 +66,11 @@ export default function Tokenomics() {
       </header>
 
       {/* Supply Stats */}
-      <section className="wrap" style={{ marginTop: '30px' }}>
+      <section className="wrap" style={{ marginTop: '0' }}>
         <Reveal>
           <div className="stat-strip" style={{ borderRadius: 'var(--r-lg)' }}>
             <div className="statbox"><div className="big">92M</div><div className="lab">Max supply</div></div>
+            <div className="statbox"><div className="big">4.6M</div><div className="lab">Circulating supply</div></div>
             <div className="statbox"><div className="big">EXBT</div><div className="lab">Ticker</div></div>
             <div className="statbox"><div className="big">8%</div><div className="lab">Staking APY</div></div>
           </div>
