@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useWallet } from '../context/WalletContext';
 import Reveal from '../components/common/Reveal';
 
@@ -53,7 +54,6 @@ export default function Docs() {
             <h2 id="overview">Overview</h2>
             <p>Exbotix is an EVM-compatible Layer 1 blockchain that converges AI, exchange infrastructure, DeFi and SocialFi into a single programmable ecosystem. Because Exbotix is EVM-equivalent, any contract, tool, or wallet that works with Ethereum works here with no code changes.</p>
             <ul>
-              <li><b>Consensus:</b> Proof of Work</li>
               <li><b>Gas token:</b> EXBT</li>
               <li><b>Block time:</b> ~12.8 seconds · ~100 TPS</li>
               <li><b>Compatibility:</b> Solidity, Hardhat, Foundry, ethers.js, web3.js, MetaMask, Remix</li>
@@ -84,8 +84,8 @@ export default function Docs() {
                 </div>
                 <div className="net-row"><span className="k">Chain ID</span><span className="v">11211</span></div>
                 <div className="net-row"><span className="k">Currency</span><span className="v">EXBT (test)</span></div>
-                <div className="net-row"><span className="k">RPC URL</span><span className="v">http://testnet.rpc.exbotix.net</span></div>
-                <div className="net-row"><span className="k">Explorer</span><span className="v"><a href="http://testnet.explorer.exbotix.net" target="_blank" rel="noopener">testnet.explorer.exbotix.net</a></span></div>
+                <div className="net-row"><span className="k">RPC URL</span><span className="v">https://testnet_rpc.exbotix.net</span></div>
+                <div className="net-row"><span className="k">Explorer</span><span className="v"><a href="https://testnet_explorer.exbotix.net" target="_blank" rel="noopener">testnet_explorer.exbotix.net</a></span></div>
                 <button className="btn btn-ghost btn-sm" onClick={() => handleAddNetwork('testnet')}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 5v14M5 12h14"/>
@@ -130,7 +130,7 @@ export default function Docs() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>hardhat.config.js</span>
               </div>
-              <pre className="code-body"><span className="kw">module</span>.exports = {'{'}{'\n'}  solidity: <span className="st">"0.8.24"</span>,{'\n'}  networks: {'{'}{'\n'}    <span className="cm">// Mainnet — Chain ID 11311</span>{'\n'}    <span className="fn">exbotix</span>: {'{'}{'\n'}      url: <span className="st">"https://rpc.exbotix.net/"</span>,{'\n'}      chainId: <span className="st">11311</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}    <span className="cm">// Testnet — Chain ID 11211</span>{'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}{'\n'}      url: <span className="st">"http://testnet.rpc.exbotix.net"</span>,{'\n'}      chainId: <span className="st">11211</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}  {'},'}{'\n'}{'};'}</pre>
+              <pre className="code-body"><span className="kw">module</span>.exports = {'{'}{'\n'}  solidity: <span className="st">"0.8.24"</span>,{'\n'}  networks: {'{'}{'\n'}    <span className="cm">// Mainnet — Chain ID 11311</span>{'\n'}    <span className="fn">exbotix</span>: {'{'}{'\n'}      url: <span className="st">"https://rpc.exbotix.net/"</span>,{'\n'}      chainId: <span className="st">11311</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}    <span className="cm">// Testnet — Chain ID 11211</span>{'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}{'\n'}      url: <span className="st">"https://testnet_rpc.exbotix.net"</span>,{'\n'}      chainId: <span className="st">11211</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}  {'},'}{'\n'}{'};'}</pre>
             </div>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
@@ -143,7 +143,7 @@ export default function Docs() {
             </div>
 
             <h2 id="rpc">RPC methods</h2>
-            <p>Exbotix supports the standard Ethereum JSON-RPC API on both networks — point at <span className="mono">rpc.exbotix.net</span> for Mainnet or <span className="mono">testnet.rpc.exbotix.net</span> for Testnet. A few common calls:</p>
+            <p>Exbotix supports the standard Ethereum JSON-RPC API on both networks — point at <span className="mono">rpc.exbotix.net</span> for Mainnet or <span className="mono">testnet_rpc.exbotix.net</span> for Testnet. A few common calls:</p>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
                 <span className="d" style={{ background: '#FF5F57' }}></span>
@@ -151,7 +151,7 @@ export default function Docs() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>curl</span>
               </div>
-              <pre className="code-body"><span className="cm"># Mainnet</span>{'\n'}<span className="st">$</span> curl https://rpc.exbotix.net/ \{'\n'}  -X POST -H <span className="st">"Content-Type: application/json"</span> \{'\n'}  -d <span className="st">'{`{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}`}'</span>{'\n'}<span className="cm">{'// → { "result": "0x2c2f" }  (11311)'}</span>{'\n\n'}<span className="cm"># Testnet → http://testnet.rpc.exbotix.net</span>{'\n'}<span className="cm">{'// → { "result": "0x2bcb" }  (11211)'}</span></pre>
+              <pre className="code-body"><span className="cm"># Mainnet</span>{'\n'}<span className="st">$</span> curl https://rpc.exbotix.net/ \{'\n'}  -X POST -H <span className="st">"Content-Type: application/json"</span> \{'\n'}  -d <span className="st">'{`{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}`}'</span>{'\n'}<span className="cm">{'// → { "result": "0x2c2f" }  (11311)'}</span>{'\n\n'}<span className="cm"># Testnet → https://testnet_rpc.exbotix.net</span>{'\n'}<span className="cm">{'// → { "result": "0x2bcb" }  (11211)'}</span></pre>
             </div>
             <ul>
               <li><span className="mono">eth_blockNumber</span> — latest block height</li>
@@ -162,19 +162,22 @@ export default function Docs() {
 
             <h2 id="faucet-sec">Faucet & explorer</h2>
             <p>Grab free <b style={{ color: 'var(--net-test)' }}>Testnet</b> EXBT to start experimenting, and track activity on the block explorer for whichever network you're using.</p>
-            <div className="grid cols-2" style={{ marginTop: '16px' }}>
-              <div className="card" style={{ padding: '22px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <h3 style={{ fontSize: '18px' }}>Faucet</h3>
+            <div className="grid cols-2" style={{ marginTop: '16px', gap: '20px' }}>
+              <div className="card" style={{ padding: '24px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '24px' }}>🪂</span>
+                  <h3 style={{ fontSize: '18px' }}>Testnet Faucet</h3>
                   <span className="net-badge test">Testnet</span>
                 </div>
                 <p className="text-dim" style={{ fontSize: '14px', margin: '8px 0 14px' }}>
-                  Receive 100 test EXBT per day on Chain ID 11211.
+                  Get 5-20 free testnet EXBT tokens per day on Chain ID 11211 for development.
                 </p>
-                <button className="btn btn-ghost btn-sm">Request EXBT</button>
+                <Link to="/faucet" className="btn btn-primary btn-sm">
+                  Get Testnet Tokens
+                </Link>
               </div>
-              <div className="card" style={{ padding: '22px' }}>
-                <h3 style={{ fontSize: '18px' }}>Block Explorers</h3>
+              <div className="card" style={{ padding: '24px' }}>
+                <h3 style={{ fontSize: '18px', marginBottom: '6px' }}>Block Explorers</h3>
                 <p className="text-dim" style={{ fontSize: '14px', margin: '8px 0 14px' }}>
                   Search blocks, transactions and contracts.
                 </p>
@@ -182,8 +185,8 @@ export default function Docs() {
                   <a className="btn btn-primary btn-sm mono" href="https://scan.exbotix.net/" target="_blank" rel="noopener">
                     Mainnet · scan.exbotix.net
                   </a>
-                  <a className="btn btn-ghost btn-sm mono" href="http://testnet.explorer.exbotix.net" target="_blank" rel="noopener">
-                    Testnet · testnet.explorer.exbotix.net
+                  <a className="btn btn-ghost btn-sm mono" href="https://testnet_explorer.exbotix.net" target="_blank" rel="noopener">
+                    Testnet · testnet_explorer.exbotix.net
                   </a>
                 </div>
               </div>

@@ -72,7 +72,6 @@ export default function Tokenomics() {
             <div className="statbox"><div className="big">92M</div><div className="lab">Max supply</div></div>
             <div className="statbox"><div className="big">EXBT</div><div className="lab">Ticker</div></div>
             <div className="statbox"><div className="big">8%</div><div className="lab">Staking APY</div></div>
-            <div className="statbox"><div className="big">PoW</div><div className="lab">Consensus</div></div>
           </div>
         </Reveal>
       </section>

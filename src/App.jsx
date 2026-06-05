@@ -12,6 +12,7 @@ import Tokenomics from './pages/Tokenomics';
 import Mission from './pages/Mission';
 import Ecosystem from './pages/Ecosystem';
 import Community from './pages/Community';
+import FaucetPage from './pages/FaucetPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="staking" element={<Staking />} />
             <Route path="bridge" element={<Bridge />} />
+            <Route path="faucet" element={<FaucetPage />} />
             <Route path="docs" element={<Docs />} />
             <Route path="tokenomics" element={<Tokenomics />} />
             <Route path="mission" element={<Mission />} />

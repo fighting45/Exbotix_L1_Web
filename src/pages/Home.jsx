@@ -25,13 +25,19 @@ export default function Home() {
             community, by the community.
           </p>
           <div className="hero-cta">
-            <Link to="/staking" className="btn btn-orbit">
+            <a href="https://exbotix.com" className="btn btn-orbit">
               Launch App{' '}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </Link>
+            </a>
             <Link to="/docs" className="btn btn-primary">Start Building</Link>
+          </div>
+          <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+            <Link to="/faucet" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '18px' }}>🪂</span>
+              Testnet Airdrop
+            </Link>
           </div>
         </div>
 
@@ -65,7 +71,6 @@ export default function Home() {
           <span className="chip net-main"><span className="dot"></span>Mainnet · 11311</span>
           <span className="chip">EVM Equivalent</span>
           <span className="chip">EXBT Gas Token</span>
-          <span className="chip">Proof of Work</span>
           <span className="chip">Solidity Ready</span>
         </div>
       </div>
@@ -173,7 +178,6 @@ export default function Home() {
                 <div className="token-line"><span className="k">Max supply</span><span className="v">92,000,000</span></div>
                 <div className="token-line"><span className="k">Utility</span><span className="v">Gas · Staking · Governance</span></div>
                 <div className="token-line"><span className="k">Staking reward</span><span className="v accent">8% APY</span></div>
-                <div className="token-line"><span className="k">Consensus</span><span className="v">Proof of Work</span></div>
               </div>
             </div>
           </Reveal>
@@ -222,7 +226,7 @@ export default function Home() {
 {'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],
 {'\n'}    {'},'}
 {'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}    <span className="cm">// Testnet</span>
-{'\n'}      url: <span className="st">"http://testnet.rpc.exbotix.net"</span>,
+{'\n'}      url: <span className="st">"https://testnet_rpc.exbotix.net"</span>,
 {'\n'}      chainId: <span className="st">11211</span>,
 {'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],
 {'\n'}    {'},'}
@@ -287,7 +291,7 @@ export default function Home() {
                 Join the builders, stakers and dreamers shaping a chain where AI, finance and social finally live in one place.
               </p>
               <div className="hero-cta" style={{ justifyContent: 'center' }}>
-                <Link to="/staking" className="btn btn-primary">Launch App</Link>
+                <a href="https://exbotix.com" className="btn btn-primary">Launch App</a>
                 <Link to="/community" className="btn btn-ghost">Join the community</Link>
               </div>
             </div>

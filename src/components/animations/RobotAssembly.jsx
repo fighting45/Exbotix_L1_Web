@@ -82,8 +82,8 @@ export default function RobotAssembly() {
           </div>
           <div className={`callout left ${calloutStates[2] ? 'show' : ''}`} style={{ top: '60%' }}>
             <div className="c-num">03 / SECURITY</div>
-            <div className="c-title">Proof-of-Work secured</div>
-            <div className="c-desc">Battle-tested consensus anchoring every block on a transparent, permissionless network.</div>
+            <div className="c-title">Battle-tested security</div>
+            <div className="c-desc">Robust consensus mechanism anchoring every block on a transparent, permissionless network.</div>
           </div>
 
           {/* RIGHT callouts */}

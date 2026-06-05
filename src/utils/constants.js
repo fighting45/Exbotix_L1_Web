@@ -11,8 +11,8 @@ export const NETWORKS = {
     chainId: "0x2bcb",
     chainIdDecimal: 11211,
     chainName: "Exbotix Testnet",
-    rpcUrls: ["http://testnet.rpc.exbotix.net"],
-    blockExplorerUrls: ["http://testnet.explorer.exbotix.net"],
+    rpcUrls: ["https://testnet_rpc.exbotix.net"],
+    blockExplorerUrls: ["https://testnet_explorer.exbotix.net"],
     nativeCurrency: { name: "Exbotix", symbol: "EXBT", decimals: 18 }
   }
 };
