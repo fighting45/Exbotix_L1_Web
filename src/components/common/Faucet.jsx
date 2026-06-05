@@ -1,14 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useWallet } from '../../context/WalletContext';
 import { sendTestnetTokens, canRequestTokens, recordTokenRequest, getTimeUntilNextRequest } from '../../utils/faucet';
 
 export default function Faucet() {
+  const { connected, address: walletAddress, connect } = useWallet();
   const [address, setAddress] = useState('');
   const [amount, setAmount] = useState(10);
   const [status, setStatus] = useState('idle'); // idle, pending, confirming, success, error
   const [message, setMessage] = useState('');
   const [txHash, setTxHash] = useState('');
+  const [useCustomAddress, setUseCustomAddress] = useState(false);
 
   const amounts = [5, 10, 15, 20];
+
+  // Auto-fill address when wallet is connected
+  useEffect(() => {
+    if (connected && walletAddress && !useCustomAddress) {
+      setAddress(walletAddress);
+    }
+  }, [connected, walletAddress, useCustomAddress]);
+
+  const handleUseCustomAddress = () => {
+    setUseCustomAddress(true);
+    setAddress('');
+  };
+
+  const handleUseWalletAddress = () => {
+    setUseCustomAddress(false);
+    if (connected && walletAddress) {
+      setAddress(walletAddress);
+    }
+  };
 
   const handleStatusChange = (newStatus, newMessage) => {
     setStatus(newStatus);
@@ -114,15 +136,65 @@ export default function Faucet() {
         </div>
 
         <div className="field-group">
-          <label className="field-label">Your Address</label>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+            <label className="field-label">Your Address</label>
+            {connected ? (
+              <span className="chip" style={{ fontSize: '12px', padding: '4px 8px' }}>
+                <span className="dot" style={{ background: 'var(--ok)' }}></span>
+                Wallet Connected
+              </span>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-ghost btn-sm"
+                onClick={connect}
+                style={{ fontSize: '12px', padding: '6px 12px' }}
+              >
+                Connect Wallet
+              </button>
+            )}
+          </div>
           <input
             type="text"
             className="field"
-            placeholder="0x..."
+            placeholder={connected && !useCustomAddress ? walletAddress : "0x... or connect wallet"}
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             disabled={status === 'pending' || status === 'confirming'}
+            style={{ color: 'var(--text)', fontWeight: '500' }}
           />
+          {connected && !useCustomAddress && (
+            <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <p className="text-dim" style={{ fontSize: '12px', flex: 1 }}>
+                Using your connected wallet address.
+              </p>
+              <button
+                type="button"
+                className="btn btn-ghost btn-sm"
+                onClick={handleUseCustomAddress}
+                style={{ fontSize: '11px', padding: '4px 10px', whiteSpace: 'nowrap' }}
+                disabled={status === 'pending' || status === 'confirming'}
+              >
+                Airdrop to other address?
+              </button>
+            </div>
+          )}
+          {connected && useCustomAddress && (
+            <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <p className="text-dim" style={{ fontSize: '12px', flex: 1 }}>
+                Enter custom address below.
+              </p>
+              <button
+                type="button"
+                className="btn btn-ghost btn-sm"
+                onClick={handleUseWalletAddress}
+                style={{ fontSize: '11px', padding: '4px 10px', whiteSpace: 'nowrap' }}
+                disabled={status === 'pending' || status === 'confirming'}
+              >
+                Use my wallet
+              </button>
+            </div>
+          )}
         </div>
 
         {(status !== 'idle' && message) && (
