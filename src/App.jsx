@@ -14,6 +14,7 @@ import Mission from './pages/Mission';
 import Ecosystem from './pages/Ecosystem';
 import Community from './pages/Community';
 import Team from './pages/Team';
+import Vesting from './pages/Vesting';
 import FaucetPage from './pages/FaucetPage';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="ecosystem" element={<Ecosystem />} />
             <Route path="community" element={<Community />} />
             <Route path="team" element={<Team />} />
+            <Route path="vesting" element={<Vesting />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

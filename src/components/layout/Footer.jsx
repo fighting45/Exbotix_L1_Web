@@ -43,6 +43,7 @@ export default function Footer() {
             <div className="footer-links">
               <Link to="/tokenomics">Tokenomics</Link>
               <Link to="/staking">Staking</Link>
+              <Link to="/vesting">Vesting</Link>
               <Link to="/bridge">Bridge</Link>
               <a href={EXPLORER_MAIN} target="_blank" rel="noopener">Block Explorer</a>
             </div>

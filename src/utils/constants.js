@@ -25,6 +25,7 @@ export const NAV_GROUPS = [
     items: [
       { href: "/tokenomics", label: "Tokenomics" },
       { href: "/staking", label: "Staking" },
+      { href: "/vesting", label: "Vesting" },
       { href: "/bridge", label: "Bridge" },
       { href: EXPLORER_MAIN, label: "Block Explorer", external: true }
     ]
