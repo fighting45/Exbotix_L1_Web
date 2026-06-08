@@ -27,9 +27,9 @@ export default function Vesting() {
 
   const [claimLoading, setClaimLoading] = useState(false);
 
-  const CHAIN_ID = 11211; // Testnet
+  const CHAIN_ID = 11311; // Mainnet
   const vestingAddress = getVestingAddress(CHAIN_ID);
-  const currentNetwork = NETWORKS.testnet;
+  const currentNetwork = NETWORKS.mainnet;
 
   // Helper functions
   const formatEther = (value) => {
@@ -352,7 +352,7 @@ export default function Vesting() {
           <div className="vest-bar">
             <div className="vest-bar-left">
               <span className="vest-net">
-                <span className="dot test live"></span>
+                <span className="dot live"></span>
                 <span>{currentNetwork.chainName}</span>
               </span>
               <span className="vest-addrstate ok">
