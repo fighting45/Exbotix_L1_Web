@@ -180,33 +180,48 @@ export default function Tokenomics() {
               <div>
                 <div className="vest-row">
                   <div className="lab">Public Sale</div>
-                  <div className="track"><div className="fill" style={{ width: '100%' }}></div></div>
-                  <div className="val">TGE 100%</div>
+                  <div className="track"><div className="fill" style={{ width: '25%' }}></div></div>
+                  <div className="val">TGE 25% · 15mo</div>
                 </div>
                 <div className="vest-row">
                   <div className="lab">Staking Rewards</div>
-                  <div className="track"><div className="fill" style={{ width: '30%' }}></div></div>
-                  <div className="val">48 mo</div>
+                  <div className="track"><div className="fill" style={{ width: '10%' }}></div></div>
+                  <div className="val">TGE 10% · 36mo</div>
                 </div>
                 <div className="vest-row">
                   <div className="lab">Team</div>
-                  <div className="track"><div className="fill" style={{ width: '15%' }}></div></div>
-                  <div className="val">12mo cliff · 36mo</div>
+                  <div className="track"><div className="fill" style={{ width: '0%' }}></div></div>
+                  <div className="val">12mo cliff · 48mo</div>
                 </div>
                 <div className="vest-row">
                   <div className="lab">Exchange Partnership</div>
-                  <div className="track"><div className="fill" style={{ width: '55%' }}></div></div>
-                  <div className="val">18 mo</div>
+                  <div className="track"><div className="fill" style={{ width: '1%' }}></div></div>
+                  <div className="val">TGE 1% · 6mo cliff · 36mo</div>
                 </div>
                 <div className="vest-row">
-                  <div className="lab">Web3 Games · RWA · SocialFi</div>
-                  <div className="track"><div className="fill" style={{ width: '25%' }}></div></div>
-                  <div className="val">36 mo</div>
+                  <div className="lab">Web3 Games</div>
+                  <div className="track"><div className="fill" style={{ width: '0%' }}></div></div>
+                  <div className="val">10mo cliff · 24mo</div>
+                </div>
+                <div className="vest-row">
+                  <div className="lab">RWA</div>
+                  <div className="track"><div className="fill" style={{ width: '5%' }}></div></div>
+                  <div className="val">TGE 5% · 24mo</div>
+                </div>
+                <div className="vest-row">
+                  <div className="lab">SocialFi</div>
+                  <div className="track"><div className="fill" style={{ width: '5%' }}></div></div>
+                  <div className="val">TGE 5% · 36mo</div>
+                </div>
+                <div className="vest-row">
+                  <div className="lab">Marketing</div>
+                  <div className="track"><div className="fill" style={{ width: '10%' }}></div></div>
+                  <div className="val">TGE 10% · 48mo</div>
                 </div>
                 <div className="vest-row">
                   <div className="lab">Advisory</div>
-                  <div className="track"><div className="fill" style={{ width: '10%' }}></div></div>
-                  <div className="val">6mo cliff · 24mo</div>
+                  <div className="track"><div className="fill" style={{ width: '0%' }}></div></div>
+                  <div className="val">12mo cliff · 24mo</div>
                 </div>
               </div>
             </Reveal>

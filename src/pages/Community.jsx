@@ -30,8 +30,8 @@ export default function Community() {
           </Reveal>
           <Reveal delay={3}>
             <div className="hero-cta" style={{ justifyContent: 'center', marginTop: '26px' }}>
-              <a href="#" className="btn btn-primary">Join Discord</a>
-              <a href="#" className="btn btn-ghost">Follow on X</a>
+              <a href="https://www.linkedin.com/company/exbotix/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Join LinkedIn</a>
+              <a href="https://x.com/exbotix" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Follow on X</a>
             </div>
           </Reveal>
         </div>
@@ -41,7 +41,7 @@ export default function Community() {
       <section className="wrap" style={{ marginTop: '30px' }}>
         <Reveal>
           <div className="stat-strip" style={{ borderRadius: 'var(--r-lg)' }}>
-            <div className="statbox"><div className="big">38K</div><div className="lab">Discord members</div></div>
+            <div className="statbox"><div className="big">38K</div><div className="lab">LinkedIn followers</div></div>
             <div className="statbox"><div className="big">62K</div><div className="lab">X followers</div></div>
             <div className="statbox"><div className="big">1,840</div><div className="lab">Stakers</div></div>
             <div className="statbox"><div className="big">90+</div><div className="lab">Countries</div></div>
@@ -60,7 +60,7 @@ export default function Community() {
           </Reveal>
           <div className="grid cols-4">
             <Reveal delay={1}>
-              <a href="#" className="card" style={{ padding: '28px', display: 'block' }}>
+              <a href="https://x.com/exbotix" target="_blank" rel="noopener noreferrer" className="card" style={{ padding: '28px', display: 'block' }}>
                 <div className="eco-icon" style={{ width: '46px', height: '46px' }}>✕</div>
                 <h3 style={{ fontSize: '19px', marginTop: '16px' }}>X / Twitter</h3>
                 <p className="text-dim" style={{ fontSize: '14px', marginTop: '6px' }}>
@@ -69,11 +69,11 @@ export default function Community() {
               </a>
             </Reveal>
             <Reveal delay={2}>
-              <a href="#" className="card" style={{ padding: '28px', display: 'block' }}>
+              <a href="https://www.linkedin.com/company/exbotix/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="card" style={{ padding: '28px', display: 'block' }}>
                 <div className="eco-icon" style={{ width: '46px', height: '46px' }}>◓</div>
-                <h3 style={{ fontSize: '19px', marginTop: '16px' }}>Discord</h3>
+                <h3 style={{ fontSize: '19px', marginTop: '16px' }}>LinkedIn</h3>
                 <p className="text-dim" style={{ fontSize: '14px', marginTop: '6px' }}>
-                  Builder support and daily chat.
+                  Professional network and updates.
                 </p>
               </a>
             </Reveal>

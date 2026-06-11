@@ -48,7 +48,8 @@ export default function Navbar() {
           </div>
         ))}
         <NavLink className="nav-link tok" to="/tokenomics">
-          $EXBT
+          <img src="https://exbotix-prod.s3.ap-south-1.amazonaws.com/EXBT/EXBT+coin+Final.png" alt="EXBT" style={{ height: '24px', width: '24px', verticalAlign: 'middle', marginRight: '3px' }} />
+          EXBT
         </NavLink>
       </div>
 
