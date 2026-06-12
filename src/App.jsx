@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { WalletProvider } from './context/WalletContext';
 import PageLayout from './components/layout/PageLayout';
 import Toast from './components/ui/Toast';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Import pages
 import Home from './pages/Home';
@@ -21,6 +22,7 @@ function App() {
   return (
     <WalletProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<PageLayout />}>
             <Route index element={<Home />} />
