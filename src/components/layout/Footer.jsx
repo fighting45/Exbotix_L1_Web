@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { EXPLORER_MAIN } from '../../utils/constants';
+import { EXPLORER_MAIN, EXCHANGE_URLS } from '../../utils/constants';
 
 export default function Footer() {
   return (
@@ -46,6 +46,7 @@ export default function Footer() {
               <Link to="/vesting">Vesting</Link>
               <Link to="/bridge">Bridge</Link>
               <a href={EXPLORER_MAIN} target="_blank" rel="noopener">Block Explorer</a>
+              <a href={EXCHANGE_URLS.lbank} target="_blank" rel="noopener">Buy EXBT · LBank</a>
             </div>
           </div>
 

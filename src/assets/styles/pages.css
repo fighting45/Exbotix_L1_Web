@@ -40,6 +40,18 @@
 .vest-row .val { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); text-align: right; }
 @media (max-width:600px){ .vest-row { grid-template-columns: 1fr; gap: 8px;} }
 
+/* ---------- LBANK BUY BAND ---------- */
+@media (max-width: 560px) {
+  .lbank-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .lbank-trade-label {
+    width: 100%;
+    justify-content: center !important;
+  }
+}
+
 /* ---------- APP PANEL (bridge / staking) ---------- */
 .app-shell { max-width: 520px; margin: 0 auto; }
 .app-card { border: 1px solid var(--line-2); border-radius: var(--r-lg); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012)); padding: 26px; box-shadow: var(--shadow); }

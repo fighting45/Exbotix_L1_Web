@@ -1,3 +1,7 @@
+export const EXCHANGE_URLS = {
+  lbank: 'https://www.lbank.com/trade/exbt_usdt',
+};
+
 export const NETWORKS = {
   mainnet: {
     chainId: "0x2c2f",
@@ -27,7 +31,8 @@ export const NAV_GROUPS = [
       { href: "/staking", label: "Staking" },
       { href: "/vesting", label: "Vesting" },
       { href: "/bridge", label: "Bridge" },
-      { href: EXPLORER_MAIN, label: "Block Explorer", external: true }
+      { href: EXPLORER_MAIN, label: "Block Explorer", external: true },
+      { href: EXCHANGE_URLS.lbank, label: "Buy EXBT · LBank", external: true }
     ]
   },
   {
