@@ -156,7 +156,7 @@ export const WalletProvider = ({ children }) => {
 
       if (!silent) {
         await switchToExbotixMainnet(newChainId, newProvider);
-        showToast("Wallet connected", "Welcome to Exbotix — " + newAddress.slice(0, 6) + "…" + newAddress.slice(-4));
+        showToast("Wallet connected", "Welcome to ExBeast — " + newAddress.slice(0, 6) + "…" + newAddress.slice(-4));
       }
 
       window.dispatchEvent(new Event("wallet:change"));

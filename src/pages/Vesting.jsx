@@ -667,7 +667,7 @@ const vestingStyles = `
 .vcp-bar { height:12px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid var(--line); overflow:hidden; display:flex; }
 .vcp-bar .seg { height:100%; display:block; transition:width .6s cubic-bezier(.2,.8,.2,1); }
 .seg.claimed { background:linear-gradient(90deg, var(--accent-2), var(--accent)); }
-.seg.releasable { background:repeating-linear-gradient(45deg, var(--accent-3), var(--accent-3) 5px, rgba(214,180,255,.55) 5px, rgba(214,180,255,.55) 10px); }
+.seg.releasable { background:repeating-linear-gradient(45deg, var(--accent-3), var(--accent-3) 5px, rgba(214,255,102,.55) 5px, rgba(214,255,102,.55) 10px); }
 .vcp-legend { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:13px; color:var(--text-dim); }
 .vcp-legend span { display:inline-flex; align-items:center; gap:7px; }
 .vcp-legend .lg { width:11px; height:11px; border-radius:3px; }

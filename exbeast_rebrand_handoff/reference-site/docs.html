@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Developer Docs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/home.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Developer Documentation</span>
+    <div class="page-hero-row" style="margin-top:14px">
+      <h1 class="reveal" data-d="1">Build on ExBeast<br/>in minutes</h1>
+      <p class="lead reveal" data-d="2" style="max-width:40ch">EVM-equivalent and tooling-compatible. Bring your Solidity, point at our RPC, and deploy. Here's everything you need to get started.</p>
+    </div>
+    <div class="hero-cta reveal" data-d="3" style="margin-top:24px">
+      <button class="btn btn-primary" id="addNet" data-net="main"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add Mainnet to wallet</button>
+      <button class="btn btn-ghost" id="faucet">Get testnet EXBT</button>
+    </div>
+  </div>
+</header>
+
+<section class="section-pad" style="padding-top:50px">
+  <div class="wrap docs-layout">
+    <aside class="docs-side reveal">
+      <h6>Get started</h6>
+      <a href="#overview" class="active">Overview</a>
+      <a href="#network">Network parameters</a>
+      <a href="#wallet">Connect a wallet</a>
+      <h6>Build</h6>
+      <a href="#quickstart">Quickstart</a>
+      <a href="#deploy">Deploy a contract</a>
+      <a href="#rpc">RPC methods</a>
+      <h6>Resources</h6>
+      <a href="#faucet-sec">Faucet &amp; explorer</a>
+    </aside>
+
+    <div class="docs-main">
+      <h2 id="overview">Overview</h2>
+      <p>ExBeast is an EVM-compatible Layer 1 blockchain that converges AI, exchange infrastructure, DeFi and SocialFi into a single programmable ecosystem. Because ExBeast is EVM-equivalent, any contract, tool, or wallet that works with Ethereum works here with no code changes.</p>
+      <ul>
+        <li><b>Consensus:</b> Proof of Work</li>
+        <li><b>Gas token:</b> EXBT</li>
+        <li><b>Block time:</b> ~12.8 seconds · ~100 TPS</li>
+        <li><b>Compatibility:</b> Solidity, Hardhat, Foundry, ethers.js, web3.js, MetaMask, Remix</li>
+      </ul>
+
+      <h2 id="network">Network parameters</h2>
+      <p>ExBeast runs two networks. Use <b style="color:var(--accent-3)">Mainnet</b> for production deployments and real value, and <b style="color:var(--net-test)">Testnet</b> for free, risk-free experimentation. Add either to any EVM wallet with the values below.</p>
+      <div class="net-grid">
+        <div class="net-card">
+          <div class="net-head">
+            <span class="net-name"><span class="dot"></span>ExBeast Mainnet</span>
+            <span class="net-badge main">Mainnet</span>
+          </div>
+          <div class="net-row"><span class="k">Chain ID</span><span class="v">11311</span></div>
+          <div class="net-row"><span class="k">Currency</span><span class="v">EXBT</span></div>
+          <div class="net-row"><span class="k">RPC URL</span><span class="v">https://rpc.exbotix.net/</span></div>
+          <div class="net-row"><span class="k">Explorer</span><span class="v"><a href="https://scan.exbotix.net/" target="_blank" rel="noopener">scan.exbotix.net</a></span></div>
+          <button class="btn btn-primary btn-sm" data-net="main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add Mainnet</button>
+        </div>
+        <div class="net-card is-test">
+          <div class="net-head">
+            <span class="net-name"><span class="dot test live"></span>ExBeast Testnet</span>
+            <span class="net-badge test">Testnet</span>
+          </div>
+          <div class="net-row"><span class="k">Chain ID</span><span class="v">11211</span></div>
+          <div class="net-row"><span class="k">Currency</span><span class="v">EXBT (test)</span></div>
+          <div class="net-row"><span class="k">RPC URL</span><span class="v">http://testnet.rpc.exbotix.net</span></div>
+          <div class="net-row"><span class="k">Explorer</span><span class="v"><a href="http://testnet.explorer.exbotix.net" target="_blank" rel="noopener">testnet.explorer.exbotix.net</a></span></div>
+          <button class="btn btn-ghost btn-sm" data-net="test"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add Testnet</button>
+        </div>
+      </div>
+
+      <h2 id="wallet">Connect a wallet</h2>
+      <p>Click a button below to add the network automatically, or enter the parameters above manually in MetaMask under <span class="mono">Settings → Networks → Add Network</span>. Make sure you select the right one — <b style="color:var(--accent-3)">Mainnet (11311)</b> for production, <b style="color:var(--net-test)">Testnet (11211)</b> for testing.</p>
+      <div class="hero-cta" style="margin:12px 0"><button class="btn btn-primary btn-sm" data-net="main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add Mainnet</button><button class="btn btn-ghost btn-sm" data-net="test"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add Testnet</button></div>
+
+      <h2 id="quickstart">Quickstart</h2>
+      <p>Configure your project to target ExBeast in seconds.</p>
+      <div class="code-card" style="margin:14px 0">
+        <div class="code-head"><span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span><span class="d" style="background:#28C840"></span><span class="mono" style="margin-left:8px;font-size:12px;color:var(--text-mute)">terminal</span><span class="copy-btn mono accent" data-copy="npm install --save-dev hardhat&#10;npx hardhat init" style="margin-left:auto;font-size:12px">copy</span></div>
+        <pre class="code-body"><span class="st">$</span> npm install <span class="kw">--save-dev</span> hardhat
+<span class="st">$</span> npx hardhat init</pre>
+      </div>
+
+      <h2 id="deploy">Deploy a contract</h2>
+      <p>Add ExBeast to your <span class="mono">hardhat.config.js</span> and deploy exactly as you would on any EVM chain.</p>
+      <div class="code-card" style="margin:14px 0">
+        <div class="code-head"><span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span><span class="d" style="background:#28C840"></span><span class="mono" style="margin-left:8px;font-size:12px;color:var(--text-mute)">hardhat.config.js</span><span class="copy-btn mono accent" data-copy="exbotix: { url: 'https://rpc.exbotix.net/', chainId: 11311, accounts: [process.env.PRIVATE_KEY] },&#10;exbotixTestnet: { url: 'http://testnet.rpc.exbotix.net', chainId: 11211, accounts: [process.env.PRIVATE_KEY] }" style="margin-left:auto;font-size:12px">copy</span></div>
+        <pre class="code-body"><span class="kw">module</span>.exports = {
+  solidity: <span class="st">"0.8.24"</span>,
+  networks: {
+    <span class="cm">// Mainnet — Chain ID 11311</span>
+    <span class="fn">exbotix</span>: {
+      url: <span class="st">"https://rpc.exbotix.net/"</span>,
+      chainId: <span class="st">11311</span>,
+      accounts: [process.env.<span class="fn">PRIVATE_KEY</span>],
+    },
+    <span class="cm">// Testnet — Chain ID 11211</span>
+    <span class="fn">exbotixTestnet</span>: {
+      url: <span class="st">"http://testnet.rpc.exbotix.net"</span>,
+      chainId: <span class="st">11211</span>,
+      accounts: [process.env.<span class="fn">PRIVATE_KEY</span>],
+    },
+  },
+};</pre>
+      </div>
+      <div class="code-card" style="margin:14px 0">
+        <div class="code-head"><span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span><span class="d" style="background:#28C840"></span><span class="mono" style="margin-left:8px;font-size:12px;color:var(--text-mute)">deploy</span></div>
+        <pre class="code-body"><span class="st">$</span> npx hardhat run scripts/deploy.js <span class="kw">--network</span> exbotix
+<span class="cm">// ✓ Contract deployed to 0x9f… on ExBeast Mainnet</span>
+
+<span class="st">$</span> npx hardhat run scripts/deploy.js <span class="kw">--network</span> exbotixTestnet
+<span class="cm">// ✓ Contract deployed to 0x9f… on ExBeast Testnet</span></pre>
+      </div>
+
+      <h2 id="rpc">RPC methods</h2>
+      <p>ExBeast supports the standard Ethereum JSON-RPC API on both networks — point at <span class="mono">rpc.exbotix.net</span> for Mainnet or <span class="mono">testnet.rpc.exbotix.net</span> for Testnet. A few common calls:</p>
+      <div class="code-card" style="margin:14px 0">
+        <div class="code-head"><span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span><span class="d" style="background:#28C840"></span><span class="mono" style="margin-left:8px;font-size:12px;color:var(--text-mute)">curl</span></div>
+        <pre class="code-body"><span class="cm"># Mainnet</span>
+<span class="st">$</span> curl https://rpc.exbotix.net/ \
+  -X POST -H <span class="st">"Content-Type: application/json"</span> \
+  -d <span class="st">'{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}'</span>
+<span class="cm">// → { "result": "0x2c2f" }  (11311)</span>
+
+<span class="cm"># Testnet → http://testnet.rpc.exbotix.net</span>
+<span class="cm">// → { "result": "0x2bcb" }  (11211)</span></pre>
+      </div>
+      <ul>
+        <li><span class="mono">eth_blockNumber</span> — latest block height</li>
+        <li><span class="mono">eth_getBalance</span> — EXBT balance of an address</li>
+        <li><span class="mono">eth_sendRawTransaction</span> — broadcast a signed tx</li>
+        <li><span class="mono">eth_call</span> — read contract state</li>
+      </ul>
+
+      <h2 id="faucet-sec">Faucet &amp; explorer</h2>
+      <p>Grab free <b style="color:var(--net-test)">Testnet</b> EXBT to start experimenting, and track activity on the block explorer for whichever network you're using.</p>
+      <div class="grid cols-2" style="margin-top:16px">
+        <div class="card" style="padding:22px"><div style="display:flex;align-items:center;gap:10px"><h3 style="font-size:18px">Faucet</h3><span class="net-badge test">Testnet</span></div><p class="text-dim" style="font-size:14px;margin:8px 0 14px">Receive 100 test EXBT per day on Chain ID 11211.</p><button class="btn btn-ghost btn-sm" id="faucet2">Request EXBT</button></div>
+        <div class="card" style="padding:22px"><h3 style="font-size:18px">Block Explorers</h3><p class="text-dim" style="font-size:14px;margin:8px 0 14px">Search blocks, transactions and contracts.</p><div style="display:flex;flex-direction:column;gap:8px"><a class="btn btn-primary btn-sm mono" href="https://scan.exbotix.net/" target="_blank" rel="noopener">Mainnet · scan.exbotix.net</a><a class="btn btn-ghost btn-sm mono" href="http://testnet.explorer.exbotix.net" target="_blank" rel="noopener">Testnet · testnet.explorer.exbotix.net</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var NET = {
+    main: {
+      chainId: "0x2c2f", chainName: "Exbotix Mainnet", id: "11311",
+      rpcUrls: ["https://rpc.exbotix.net/"], blockExplorerUrls: ["https://scan.exbotix.net/"],
+    },
+    test: {
+      chainId: "0x2bcb", chainName: "Exbotix Testnet", id: "11211",
+      rpcUrls: ["http://testnet.rpc.exbotix.net"], blockExplorerUrls: ["http://testnet.explorer.exbotix.net"],
+    },
+  };
+  function addNet(kind) {
+    var n = NET[kind] || NET.main;
+    if (window.ethereum && window.ethereum.request) {
+      window.ethereum.request({ method: "wallet_addEthereumChain", params: [{
+        chainId: n.chainId, chainName: n.chainName,
+        nativeCurrency: { name: "Exbotix", symbol: "EXBT", decimals: 18 },
+        rpcUrls: n.rpcUrls, blockExplorerUrls: n.blockExplorerUrls,
+      }]}).then(function(){ window.toast("Network added", n.chainName + " is ready in your wallet"); })
+        .catch(function(){ window.toast("Request cancelled", ""); });
+    } else { window.toast("No wallet detected", "Install MetaMask, then add " + n.chainName + " (Chain ID " + n.id + ")"); }
+  }
+  document.querySelectorAll("[data-net]").forEach(function(b){
+    b.addEventListener("click", function(){ addNet(b.getAttribute("data-net")); });
+  });
+  ["faucet","faucet2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click", function(){ window.toast("Faucet request sent", "100 test EXBT on the way"); }); });
+
+  document.querySelectorAll(".copy-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var t = b.getAttribute("data-copy").replace(/&#10;/g, "\n");
+      navigator.clipboard && navigator.clipboard.writeText(t);
+      var o = b.textContent; b.textContent = "copied ✓"; setTimeout(function(){ b.textContent = o; }, 1400);
+    });
+  });
+
+  // scrollspy
+  var links = [].slice.call(document.querySelectorAll(".docs-side a"));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function spy() {
+    var y = window.scrollY + 140, idx = 0;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) idx = i; });
+    links.forEach(function (a, i) { a.classList.toggle("active", i === idx); });
+  }
+  window.addEventListener("scroll", spy, { passive: true }); spy();
+})();
+</script>
+</body>
+</html>

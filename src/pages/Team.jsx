@@ -76,7 +76,7 @@ export default function Team() {
           width: 1600px; max-width: none; height: 100%;
           z-index: 0; pointer-events: none;
           opacity: .55;
-          filter: drop-shadow(0 0 14px rgba(157,92,255,.35));
+          filter: drop-shadow(0 0 14px rgba(191,255,0,.35));
         }
         .tm-section .wrap { position: relative; z-index: 1; }
 
@@ -99,8 +99,8 @@ export default function Team() {
           border-radius: 50%;
           padding: 3px;
           background:
-            conic-gradient(from 150deg, var(--accent), var(--accent-2) 40%, rgba(157,92,255,.15) 62%, var(--accent-mag) 88%, var(--accent));
-          box-shadow: 0 0 0 1px rgba(157,92,255,.18), 0 22px 48px -22px rgba(0,0,0,.85);
+            conic-gradient(from 150deg, var(--accent), var(--accent-2) 40%, rgba(191,255,0,.15) 62%, var(--accent-mag) 88%, var(--accent));
+          box-shadow: 0 0 0 1px rgba(191,255,0,.18), 0 22px 48px -22px rgba(0,0,0,.85);
           transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, filter .45s;
         }
         .tm-lg .tm-ring { --ring: 224px; }
@@ -114,12 +114,12 @@ export default function Team() {
         }
         .tm-photo::after {
           content: ""; position: absolute; inset: 0; border-radius: 50%;
-          background: linear-gradient(180deg, transparent 58%, rgba(10,6,19,.34));
+          background: linear-gradient(180deg, transparent 58%, rgba(8,10,6,.34));
           pointer-events: none;
         }
         .tm:hover .tm-ring {
           transform: translateY(-8px);
-          box-shadow: 0 0 0 1px rgba(157,92,255,.4), 0 0 46px -6px var(--accent-glow), 0 30px 60px -26px rgba(0,0,0,.9);
+          box-shadow: 0 0 0 1px rgba(191,255,0,.4), 0 0 46px -6px var(--accent-glow), 0 30px 60px -26px rgba(0,0,0,.9);
           filter: saturate(1.08);
         }
 
@@ -156,7 +156,7 @@ export default function Team() {
           <Reveal><span className="eyebrow">People</span></Reveal>
           <div className="page-hero-row" style={{ marginTop: '14px' }}>
             <Reveal delay={1}>
-              <h1>The minds<br/>behind <span className="gradtext">Exbotix</span>.</h1>
+              <h1>The minds<br/>behind <span className="gradtext">ExBeast</span>.</h1>
             </Reveal>
             <Reveal delay={2}>
               <p className="lead" style={{ maxWidth: '46ch' }}>
@@ -171,14 +171,14 @@ export default function Team() {
         <svg className="tm-wave" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <defs>
             <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#9D5CFF" stopOpacity="0"/>
-              <stop offset="0.5" stopColor="#9D5CFF" stopOpacity="0.9"/>
-              <stop offset="1" stopColor="#D14BFF" stopOpacity="0"/>
+              <stop offset="0" stopColor="#BFFF00" stopOpacity="0"/>
+              <stop offset="0.5" stopColor="#BFFF00" stopOpacity="0.9"/>
+              <stop offset="1" stopColor="#9BE000" stopOpacity="0"/>
             </linearGradient>
             <linearGradient id="waveGrad2" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#6E54F2" stopOpacity="0"/>
-              <stop offset="0.5" stopColor="#6E54F2" stopOpacity="0.7"/>
-              <stop offset="1" stopColor="#9D5CFF" stopOpacity="0"/>
+              <stop offset="0" stopColor="#6FA800" stopOpacity="0"/>
+              <stop offset="0.5" stopColor="#6FA800" stopOpacity="0.7"/>
+              <stop offset="1" stopColor="#BFFF00" stopOpacity="0"/>
             </linearGradient>
           </defs>
           <path d="M-40 250 C 280 120, 460 380, 760 300 S 1240 140, 1500 280" fill="none" stroke="url(#waveGrad)" strokeWidth="1.5"/>

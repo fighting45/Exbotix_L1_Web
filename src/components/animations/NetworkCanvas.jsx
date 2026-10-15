@@ -50,7 +50,7 @@ export default function NetworkCanvas() {
           const d = Math.hypot(dx, dy);
 
           if (d < LINK) {
-            ctx.strokeStyle = `rgba(157,92,255,${(0.16 * (1 - d / LINK)).toFixed(3)})`;
+            ctx.strokeStyle = `rgba(191,255,0,${(0.16 * (1 - d / LINK)).toFixed(3)})`;
             ctx.lineWidth = dpr * 0.6;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -59,7 +59,7 @@ export default function NetworkCanvas() {
           }
         }
 
-        ctx.fillStyle = 'rgba(190,150,255,0.6)';
+        ctx.fillStyle = 'rgba(200,240,120,0.6)';
         ctx.beginPath();
         ctx.arc(a.x, a.y, a.r, 0, 6.283);
         ctx.fill();

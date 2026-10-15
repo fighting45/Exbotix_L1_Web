@@ -20,7 +20,7 @@ export default function Home() {
         <div className="hero-content wrap">
           <RotatingHeadline />
           <p className="lead">
-            Exbotix is a modern, efficient Layer 1 that converges AI, exchange infrastructure,
+            ExBeast is a modern, efficient Layer 1 that converges AI, exchange infrastructure,
             decentralized finance and social into one programmable ecosystem. Built for the
             community, by the community.
           </p>
@@ -161,10 +161,15 @@ export default function Home() {
           <Reveal>
             <div className="token-panel">
               <div className="left">
+                <img
+                  src="/assets/img/exbt-coin.png"
+                  alt="EXBT coin"
+                  style={{ width: '96px', height: '96px', display: 'block', filter: 'drop-shadow(0 10px 30px rgba(191,255,0,.35))', marginBottom: '18px' }}
+                />
                 <span className="eyebrow">The EXBT token</span>
                 <h2 className="h-md" style={{ margin: '16px 0 12px' }}>Gas, staking &amp; governance in one asset</h2>
                 <p className="lead" style={{ fontSize: '16px' }}>
-                  EXBT powers every transaction, secures the network through staking, and gives the community a direct say in where Exbotix goes next.
+                  EXBT powers every transaction, secures the network through staking, and gives the community a direct say in where ExBeast goes next.
                 </p>
                 <div className="hero-cta" style={{ marginTop: '26px' }}>
                   <Link to="/tokenomics" className="btn btn-primary">View tokenomics</Link>
@@ -172,7 +177,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="right">
-                <div className="token-line"><span className="k">Token</span><span className="v">Exbotix · EXBT</span></div>
+                <div className="token-line"><span className="k">Token</span><span className="v">ExBeast · EXBT</span></div>
                 <div className="token-line"><span className="k">Max supply</span><span className="v">92,000,000</span></div>
                 <div className="token-line"><span className="k">Utility</span><span className="v">Gas · Staking · Governance</span></div>
                 <div className="token-line"><span className="k">Staking reward</span><span className="v accent">8% APY</span></div>
@@ -190,7 +195,7 @@ export default function Home() {
               <span className="eyebrow">Built for builders</span>
               <h2 className="h-lg" style={{ margin: '14px 0 16px' }}>Ship in minutes,<br />not migrations</h2>
               <p className="lead">
-                If you can build on Ethereum, you can build on Exbotix. Point your tooling at our RPC, keep your Solidity, and deploy to a chain designed for the next wave of apps.
+                If you can build on Ethereum, you can build on ExBeast. Point your tooling at our RPC, keep your Solidity, and deploy to a chain designed for the next wave of apps.
               </p>
               <div className="tag-row" style={{ marginTop: '24px' }}>
                 <span className="chip">Hardhat</span>
@@ -284,9 +289,9 @@ export default function Home() {
           <Reveal>
             <div className="cta-final">
               <span className="eyebrow" style={{ justifyContent: 'center' }}>For the community, by the community</span>
-              <h2 className="h-xl" style={{ margin: '18px 0 16px' }}>Build the future on Exbotix</h2>
+              <h2 className="h-xl" style={{ margin: '18px 0 16px' }}>Build the future on ExBeast</h2>
               <p className="lead" style={{ margin: '0 auto 30px' }}>
-                Join the builders, stakers and dreamers shaping a chain where AI, finance and social finally live in one place.
+                Join the builders, stakers and dreamers shaping a chain where AI, finance and social finally live in one place on ExBeast.
               </p>
               <div className="hero-cta" style={{ justifyContent: 'center' }}>
                 <a href="https://exbotix.com" className="btn btn-primary">Launch App</a>

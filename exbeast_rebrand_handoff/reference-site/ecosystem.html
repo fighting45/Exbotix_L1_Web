@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Ecosystem &amp; dApps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/home.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ecosystem</span>
+    <div class="page-hero-row" style="margin-top:14px">
+      <h1 class="reveal" data-d="1">One chain.<br/>Every category.</h1>
+      <p class="lead reveal" data-d="2" style="max-width:42ch">ExBeast is built to host the full spectrum of on-chain apps. Here's what's live on testnet, what's in build, and where you can plug in.</p>
+    </div>
+  </div>
+</header>
+
+<!-- FILTER -->
+<section class="wrap" style="margin-top:24px">
+  <div class="tag-row reveal" id="filters">
+    <button class="chip filter active" data-f="all">All</button>
+    <button class="chip filter" data-f="ai">AI</button>
+    <button class="chip filter" data-f="defi">DeFi</button>
+    <button class="chip filter" data-f="cex">CEX</button>
+    <button class="chip filter" data-f="social">SocialFi</button>
+    <button class="chip filter" data-f="games">Games</button>
+    <button class="chip filter" data-f="rwa">RWA</button>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:36px">
+  <div class="wrap">
+    <div class="grid cols-3" id="grid"></div>
+  </div>
+</section>
+
+<!-- BUILD CTA -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <span class="eyebrow" style="justify-content:center">Builders wanted</span>
+      <h2 class="h-lg" style="margin:16px 0 14px">Bring your dApp to ExBeast</h2>
+      <p class="lead" style="margin:0 auto 28px">Grants, technical support and a community of early adopters are waiting. If you can build on Ethereum, you can build here.</p>
+      <div class="hero-cta" style="justify-content:center"><a href="docs.html" class="btn btn-primary">Start building</a><a href="community.html" class="btn btn-ghost">Apply for a grant</a></div>
+    </div>
+  </div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var APPS = [
+    { n: "NeuralSwap", c: "ai", g: "⬡", d: "AI-routed DEX aggregator finding the best execution across pools.", s: "Live · Testnet" },
+    { n: "AgentVault", c: "ai", g: "◉", d: "Autonomous agent wallets with on-chain spending policies.", s: "In build" },
+    { n: "ExDEX", c: "defi", g: "◈", d: "Native AMM with concentrated liquidity and EXBT incentives.", s: "Live · Testnet" },
+    { n: "LendBotix", c: "defi", g: "▣", d: "Over-collateralized lending and borrowing markets.", s: "In build" },
+    { n: "Perptual", c: "defi", g: "∿", d: "Decentralized perpetuals with up to 20x leverage.", s: "Coming soon" },
+    { n: "ExBridge CEX", c: "cex", g: "⇄", d: "Exchange-grade order books bridged into ExBeast.", s: "In build" },
+    { n: "Plaza", c: "social", g: "◎", d: "Creator economy and social graph owned by users.", s: "In build" },
+    { n: "RepID", c: "social", g: "◍", d: "Portable on-chain reputation and identity.", s: "Coming soon" },
+    { n: "BotixArena", c: "games", g: "▲", d: "On-chain mech battler with true asset ownership.", s: "In build" },
+    { n: "LootForge", c: "games", g: "◆", d: "Cross-game item marketplace and minting toolkit.", s: "Coming soon" },
+    { n: "RealVault", c: "rwa", g: "◧", d: "Tokenized real-world assets with verifiable provenance.", s: "Coming soon" },
+    { n: "YieldRWA", c: "rwa", g: "▦", d: "On-chain access to tokenized treasury yields.", s: "Coming soon" },
+  ];
+  var grid = document.getElementById("grid");
+  function render(f) {
+    grid.innerHTML = "";
+    APPS.filter(function (a) { return f === "all" || a.c === f; }).forEach(function (a, i) {
+      var live = a.s.indexOf("Live") === 0;
+      var soon = a.s.indexOf("Coming") === 0;
+      var col = live ? "var(--ok)" : soon ? "var(--text-mute)" : "var(--warn)";
+      var el = document.createElement("div");
+      el.className = "card eco-card reveal in";
+      el.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:flex-start">' +
+        '<div class="eco-icon">' + a.g + '</div>' +
+        '<span class="chip" style="color:' + col + ';border-color:' + col + '33"><span class="dot" style="background:' + col + ';box-shadow:0 0 10px ' + col + '"></span>' + a.s + '</span></div>' +
+        '<div><h3 style="margin-top:18px">' + a.n + '</h3><p>' + a.d + '</p></div>' +
+        '<div class="stat">// ' + a.c.toUpperCase() + '</div>';
+      grid.appendChild(el);
+    });
+  }
+  document.querySelectorAll(".filter").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".filter").forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active"); render(b.dataset.f);
+    });
+  });
+  render("all");
+})();
+</script>
+<style>
+.filter { cursor:pointer; background:rgba(255,255,255,.02); transition: all .2s; }
+.filter:hover { border-color: var(--accent); color: var(--accent); }
+.filter.active { background: rgba(191,255,0,.12); border-color: var(--accent); color: var(--accent); }
+</style>
+</body>
+</html>

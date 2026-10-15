@@ -34,7 +34,7 @@ export default function WalletModal({ onClose }) {
         </button>
 
         <h3 className="wallet-modal-title">Connect a Wallet</h3>
-        <p className="wallet-modal-desc">Choose how you want to connect to Exbotix</p>
+        <p className="wallet-modal-desc">Choose how you want to connect to ExBeast</p>
 
         <div className="wallet-options">
           <button className="wallet-option" onClick={() => handleConnect('metamask')}>

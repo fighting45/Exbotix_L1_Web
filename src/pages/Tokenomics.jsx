@@ -4,16 +4,16 @@ import Reveal from '../components/common/Reveal';
 import LBankBuyBand from '../components/tokenomics/LBankBuyBand';
 
 const DATA = [
-  { nm: "Staking Rewards", pc: 22, c: "#9D5CFF" },
-  { nm: "Public Sale", pc: 20, c: "#C77DFF" },
-  { nm: "Team", pc: 15, c: "#6E54F2" },
-  { nm: "Exchange Partnership", pc: 10, c: "#B14BFF" },
-  { nm: "Marketing", pc: 10, c: "#7B6CFF" },
-  { nm: "Web3 Games", pc: 10, c: "#D14BFF" },
-  { nm: "RWA", pc: 6, c: "#8A6BF0" },
-  { nm: "SocialFi", pc: 5, c: "#E59CFF" },
-  { nm: "Charity", pc: 1, c: "#CBB4FF" },
-  { nm: "Advisory", pc: 1, c: "#7A6FA8" },
+  { nm: "Staking Rewards", pc: 22, c: "#BFFF00" },
+  { nm: "Public Sale", pc: 20, c: "#C8F23A" },
+  { nm: "Team", pc: 15, c: "#6FA800" },
+  { nm: "Exchange Partnership", pc: 10, c: "#A6E000" },
+  { nm: "Marketing", pc: 10, c: "#8FCC00" },
+  { nm: "Web3 Games", pc: 10, c: "#9BE000" },
+  { nm: "RWA", pc: 6, c: "#8FCC00" },
+  { nm: "SocialFi", pc: 5, c: "#E3FF8F" },
+  { nm: "Charity", pc: 1, c: "#DDF59A" },
+  { nm: "Advisory", pc: 1, c: "#748064" },
 ];
 
 const SUPPLY = 92000000;
@@ -59,7 +59,7 @@ export default function Tokenomics() {
             <Reveal delay={1}><h1>A token built<br/>to power an ecosystem</h1></Reveal>
             <Reveal delay={2}>
               <p className="lead" style={{ maxWidth: '42ch' }}>
-                EXBT is the heartbeat of Exbotix — fueling gas, securing the network through staking, and handing governance to the community. A fixed supply, transparently allocated.
+                EXBT is the heartbeat of ExBeast — fueling gas, securing the network through staking, and handing governance to the community. A fixed supply, transparently allocated.
               </p>
             </Reveal>
           </div>
@@ -142,7 +142,7 @@ export default function Tokenomics() {
               <div className="card util-card">
                 <div className="ic">⛽</div>
                 <h3>Gas & settlement</h3>
-                <p>Every transaction, contract call and dApp interaction on Exbotix is paid in EXBT — creating organic, usage-driven demand.</p>
+                <p>Every transaction, contract call and dApp interaction on ExBeast is paid in EXBT — creating organic, usage-driven demand.</p>
               </div>
             </Reveal>
             <Reveal delay={2}>

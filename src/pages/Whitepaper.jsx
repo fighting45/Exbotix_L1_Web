@@ -115,7 +115,7 @@ export default function Whitepaper() {
           <Reveal delay={1}><h1 style={{ marginTop: '14px' }}>Consensus Algorithm &<br/>Mathematical Foundation</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead" style={{ margin: '18px auto 0', maxWidth: '55ch' }}>
-              A comprehensive technical overview of the Exbotix Chain proof-of-work consensus protocol, cryptographic foundations, and security model.
+              A comprehensive technical overview of the ExBeast Chain proof-of-work consensus protocol, cryptographic foundations, and security model.
             </p>
           </Reveal>
         </div>
@@ -148,7 +148,7 @@ export default function Whitepaper() {
               <section id="overview" className="wp-section">
                 <h2>1. Overview</h2>
                 <p>
-                  Exbotix Chain (EXBT) utilizes the original Ethereum Ethash Proof-of-Work consensus protocol. Ethash is a memory-hard proof-of-work function designed to reduce ASIC advantages and increase computational decentralization.
+                  ExBeast Chain (EXBT) utilizes the original Ethereum Ethash Proof-of-Work consensus protocol. Ethash is a memory-hard proof-of-work function designed to reduce ASIC advantages and increase computational decentralization.
                 </p>
                 <p>
                   The security of the blockchain is derived from computational work performed by miners and verified by network participants.
@@ -591,7 +591,7 @@ export default function Whitepaper() {
                 <div className="formula">
                   HashPower(A) &lt; HashPower(HonestNetwork)
                 </div>
-                <p>This property forms the foundation of Exbotix Chain security.</p>
+                <p>This property forms the foundation of ExBeast Chain security.</p>
               </section>
             </main>
           </div>

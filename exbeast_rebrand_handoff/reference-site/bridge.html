@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<header class="page-hero">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal" style="justify-content:center">ExBeast Bridge</span>
+    <h1 class="reveal" data-d="1" style="margin-top:14px">Move assets in, build everywhere</h1>
+    <p class="lead reveal" data-d="2" style="margin:18px auto 0">Bridge EXBT and major assets between ExBeast and the chains you already use. Fast, transparent, and non-custodial.</p>
+  </div>
+</header>
+
+<section style="padding:40px 0 90px">
+  <div class="wrap app-shell">
+    <div class="app-card reveal">
+      <!-- chain selector -->
+      <div class="field" style="border:0;padding:0;background:none">
+        <div class="chain-select">
+          <div class="chain-box" id="fromBox"><div class="t">From</div><div class="n"><span class="dot" id="fromDot"></span><span id="fromName">Ethereum</span></div></div>
+          <button class="chain-flip" id="flip" aria-label="Swap direction"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v13M7 17l-3-3M7 17l3-3M17 20V7M17 7l-3 3M17 7l3 3"/></svg></button>
+          <div class="chain-box" id="toBox"><div class="t">To</div><div class="n"><span class="dot" id="toDot" style="background:var(--accent-2);box-shadow:0 0 12px var(--accent-2)"></span><span id="toName">ExBeast</span></div></div>
+        </div>
+      </div>
+
+      <!-- amount -->
+      <div class="field" style="margin-top:14px">
+        <div class="lab"><span>You send</span><span id="balLine">Balance: —</span></div>
+        <div class="row">
+          <input id="amt" type="text" inputmode="decimal" placeholder="0.0" />
+          <button class="asset-pill" id="assetPill"><span class="glyph">E</span><span id="assetName">EXBT</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        </div>
+        <div class="pct-row"><button data-pct="25">25%</button><button data-pct="50">50%</button><button data-pct="75">75%</button><button data-pct="100">MAX</button></div>
+      </div>
+
+      <!-- summary -->
+      <div class="kvs">
+        <div class="kv"><span class="k">You receive</span><span class="v accent" id="recv">0.0 EXBT</span></div>
+        <div class="kv"><span class="k">Bridge fee (0.1%)</span><span class="v" id="fee">0.0 EXBT</span></div>
+        <div class="kv"><span class="k">Est. arrival</span><span class="v">~2 min</span></div>
+        <div class="kv"><span class="k">Route</span><span class="v" id="route">Ethereum → ExBeast</span></div>
+      </div>
+
+      <button class="btn btn-primary" id="action" style="width:100%;justify-content:center;margin-top:18px;padding:15px">Connect Wallet to Bridge</button>
+      <div id="progress" style="display:none;margin-top:18px"></div>
+    </div>
+
+    <div class="grid cols-3 reveal" style="margin-top:28px;gap:14px">
+      <div class="card" style="padding:18px"><div class="mono accent" style="font-size:12px">NON-CUSTODIAL</div><p class="text-dim" style="font-size:13.5px;margin-top:6px">You hold your keys. The bridge never takes custody of your funds.</p></div>
+      <div class="card" style="padding:18px"><div class="mono accent" style="font-size:12px">AUDITED</div><p class="text-dim" style="font-size:13.5px;margin-top:6px">Smart contracts independently reviewed before mainnet.</p></div>
+      <div class="card" style="padding:18px"><div class="mono accent" style="font-size:12px">TRANSPARENT</div><p class="text-dim" style="font-size:13.5px;margin-top:6px">Every transfer is verifiable on the ExBeast explorer.</p></div>
+    </div>
+    <p class="text-mute reveal" style="text-align:center;font-size:13px;margin-top:24px">Testnet demo — transactions are simulated. Connect a wallet to try the full flow.</p>
+  </div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var CHAINS = ["Ethereum", "BNB Chain", "Polygon", "Arbitrum", "ExBeast"];
+  var state = { from: "Ethereum", to: "ExBeast", asset: "EXBT" };
+  var fromName = document.getElementById("fromName"), toName = document.getElementById("toName");
+  var amt = document.getElementById("amt"), recv = document.getElementById("recv"), fee = document.getElementById("fee");
+  var route = document.getElementById("route"), balLine = document.getElementById("balLine");
+  var action = document.getElementById("action"), progress = document.getElementById("progress");
+  var assetName = document.getElementById("assetName");
+
+  function bal(){ return parseFloat(localStorage.getItem("exbt_bal") || "0"); }
+  function refresh() {
+    fromName.textContent = state.from; toName.textContent = state.to;
+    route.textContent = state.from + " → " + state.to;
+    var v = parseFloat(amt.value) || 0;
+    var f = v * 0.001;
+    fee.textContent = f.toFixed(4) + " " + state.asset;
+    recv.textContent = (v - f).toFixed(4) + " " + state.asset;
+    assetName.textContent = state.asset;
+    if (window.ExWallet.connected) { balLine.textContent = "Balance: " + bal().toFixed(2) + " " + state.asset; updateAction(); }
+    else { balLine.textContent = "Balance: —"; action.textContent = "Connect Wallet to Bridge"; }
+  }
+  function updateAction(){
+    var v = parseFloat(amt.value) || 0;
+    if (v <= 0) { action.textContent = "Enter an amount"; action.disabled = true; action.style.opacity = .6; }
+    else if (v > bal()) { action.textContent = "Insufficient balance"; action.disabled = true; action.style.opacity = .6; }
+    else { action.textContent = "Bridge " + v + " " + state.asset; action.disabled = false; action.style.opacity = 1; }
+  }
+
+  document.getElementById("flip").addEventListener("click", function () {
+    var t = state.from; state.from = state.to; state.to = t; refresh();
+  });
+  function pickChain(which){
+    var cur = state[which];
+    var i = (CHAINS.indexOf(cur) + 1) % CHAINS.length;
+    var next = CHAINS[i];
+    if (next === state[which === "from" ? "to" : "from"]) { i = (i + 1) % CHAINS.length; next = CHAINS[i]; }
+    state[which] = next; refresh();
+  }
+  document.getElementById("fromBox").addEventListener("click", function(){ pickChain("from"); });
+  document.getElementById("toBox").addEventListener("click", function(){ pickChain("to"); });
+
+  amt.addEventListener("input", refresh);
+  document.querySelectorAll(".pct-row button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (!window.ExWallet.connected) { window.ExWallet.connect(); return; }
+      amt.value = (bal() * (+b.dataset.pct) / 100).toFixed(2); refresh();
+    });
+  });
+
+  action.addEventListener("click", function () {
+    if (!window.ExWallet.connected) { window.ExWallet.connect(); return; }
+    var v = parseFloat(amt.value) || 0;
+    if (v <= 0 || v > bal()) return;
+    action.disabled = true; action.style.opacity = .6;
+    var steps = ["Approving " + state.asset + "…", "Locking on " + state.from + "…", "Relaying message…", "Minting on " + state.to + "…"];
+    progress.style.display = "block"; progress.innerHTML = "";
+    steps.forEach(function (s, i) {
+      var row = document.createElement("div");
+      row.className = "kv"; row.style.padding = "8px 0";
+      row.innerHTML = '<span class="k">' + s + '</span><span class="v" style="color:var(--text-mute)">…</span>';
+      progress.appendChild(row);
+      setTimeout(function () {
+        row.querySelector(".v").innerHTML = '<span style="color:var(--ok)">✓</span>';
+        if (i === steps.length - 1) {
+          localStorage.setItem("exbt_bal", (bal() - v).toFixed(2));
+          window.toast("Bridge complete", v.toFixed(2) + " " + state.asset + " arrived on " + state.to);
+          amt.value = ""; progress.style.display = "none"; refresh();
+        }
+      }, 700 * (i + 1));
+    });
+  });
+
+  window.addEventListener("wallet:change", refresh);
+  refresh();
+})();
+</script>
+</body>
+</html>

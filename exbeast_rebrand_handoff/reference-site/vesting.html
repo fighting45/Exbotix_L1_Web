@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Vesting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/home.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<header class="page-hero" data-screen-label="Vesting hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Token Vesting</span>
+    <div class="page-hero-row" style="margin-top:14px">
+      <h1 class="reveal" data-d="1">Your <span class="gradtext">EXBT</span>,<br/>unlocked on schedule.</h1>
+      <p class="lead reveal" data-d="2" style="max-width:44ch">Track your allocation, watch it vest period by period, and claim what's released — straight from the on-chain vesting contract.</p>
+    </div>
+  </div>
+</header>
+
+<!-- CONNECT / CONFIG BAR -->
+<section class="wrap" style="margin-top:8px">
+  <div class="vest-bar reveal">
+    <div class="vest-bar-left">
+      <span class="vest-net"><span class="dot live"></span><span id="netLabel">ExBeast Mainnet</span></span>
+      <span class="vest-addrstate warn" id="addrState">Not set</span>
+    </div>
+    <div class="vest-bar-right">
+      <button class="btn btn-ghost btn-sm" id="cfgBtn" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Contract
+      </button>
+      <button class="btn btn-ghost btn-sm" id="switchBtn" type="button" style="display:none;border-color:var(--warn);color:var(--warn)">Switch network</button>
+      <button class="chip" id="acctChip" type="button" style="display:none;cursor:pointer"></button>
+      <button class="btn btn-primary btn-sm" id="connectBtn" type="button">Connect Wallet</button>
+    </div>
+  </div>
+  <div class="vest-cfg" id="cfgRow">
+    <div class="vest-cfg-grid">
+      <label class="vest-field">
+        <span>Vesting contract address</span>
+        <input id="addrInput" type="text" placeholder="0x… deployed VestingWallet address" spellcheck="false" autocomplete="off" />
+      </label>
+      <label class="vest-field" style="max-width:200px">
+        <span>Network</span>
+        <select id="netSel">
+          <option value="11311">Mainnet · 11311</option>
+          <option value="11211">Testnet · 11211</option>
+        </select>
+      </label>
+      <button class="btn btn-primary btn-sm" id="saveCfg" type="button" style="align-self:flex-end">Save</button>
+    </div>
+    <p class="vest-cfg-note">Paste the deployed contract address to start reading on-chain. Stored locally in your browser.</p>
+  </div>
+</section>
+
+<!-- CONTRACT STATS -->
+<section class="wrap" style="margin-top:26px">
+  <div class="vest-stats reveal">
+    <div class="vest-stat"><div class="vs-k">Contract Balance</div><div class="vs-v" id="stBal">—</div></div>
+    <div class="vest-stat"><div class="vs-k">Vesting Period</div><div class="vs-v" id="stPeriod">—</div></div>
+    <div class="vest-stat"><div class="vs-k">Status</div><div class="vs-v" id="stStatus">—</div></div>
+    <div class="vest-stat"><div class="vs-k">Beneficiaries</div><div class="vs-v" id="stBenef">—</div></div>
+  </div>
+</section>
+
+<!-- ALLOCATION -->
+<section class="section-pad" style="padding:46px 0 0" data-screen-label="Allocation">
+  <div class="wrap">
+    <div class="vest-cols">
+      <!-- claimable -->
+      <div class="card vest-claim reveal">
+        <div class="corner"></div>
+        <div class="vc-head">
+          <span class="eyebrow" style="color:var(--accent-3)">Claimable now</span>
+          <span class="chip mono" id="nextUnlock">—</span>
+        </div>
+
+        <div id="allocGate" class="vest-gate">
+          <p class="text-dim">Connect your wallet to view your EXBT allocation and claim released tokens.</p>
+          <button class="btn btn-primary" type="button" onclick="document.getElementById('connectBtn').click()">Connect Wallet</button>
+        </div>
+
+        <div id="allocNone" class="vest-gate" style="display:none">
+          <div class="vest-none-ic">∅</div>
+          <p class="text-dim" id="noneMsg">No vesting schedule found for this address.</p>
+        </div>
+
+        <div id="allocData" style="display:none">
+          <div class="vc-amount"><span class="num gradtext" id="claimable">0</span><span class="unit">EXBT</span></div>
+          <button class="btn btn-primary vc-claim-btn" id="claimBtn" type="button" disabled>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+            Claim EXBT
+          </button>
+
+          <div class="vc-progress">
+            <div class="vcp-bar">
+              <span class="seg claimed" id="segClaimed"></span>
+              <span class="seg releasable" id="segReleasable"></span>
+            </div>
+            <div class="vcp-legend">
+              <span><i class="lg claimed"></i>Claimed</span>
+              <span><i class="lg releasable"></i>Claimable</span>
+              <span><i class="lg locked"></i>Locked</span>
+              <span class="vcp-pct" id="pctVested">0%</span> vested
+            </div>
+          </div>
+
+          <div class="vc-keys">
+            <div class="vk"><span class="vk-k">Total allocation</span><span class="vk-v" id="kTotal">0</span></div>
+            <div class="vk"><span class="vk-k">Released</span><span class="vk-v" id="kReleased">0</span></div>
+            <div class="vk"><span class="vk-k">Vested to date</span><span class="vk-v" id="kVested">0</span></div>
+            <div class="vk"><span class="vk-k">Still locked</span><span class="vk-v" id="kLocked">0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- schedule -->
+      <div class="card vest-sched reveal" data-d="1">
+        <span class="eyebrow">Your schedule</span>
+        <div class="vs-rows">
+          <div class="vs-row"><span class="k">TGE unlock</span><span class="v" id="sTge">—</span></div>
+          <div class="vs-row"><span class="k">Cliff</span><span class="v" id="sCliff">—</span></div>
+          <div class="vs-row"><span class="k">Linear vesting</span><span class="v" id="sVest">—</span></div>
+          <div class="vs-row"><span class="k">Start</span><span class="v" id="sStart">—</span></div>
+          <div class="vs-row"><span class="k">Cliff ends</span><span class="v" id="sCliffEnd">—</span></div>
+          <div class="vs-row"><span class="k">Fully vested</span><span class="v" id="sFull">—</span></div>
+        </div>
+        <p class="vs-foot text-mute">Amounts unlock once per period after the cliff. TGE is released up front at start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN -->
+<section class="section-pad" id="adminWrap" style="padding:56px 0 0;display:none" data-screen-label="Admin">
+  <div class="wrap">
+    <div class="vest-admin reveal">
+      <div class="va-head">
+        <div>
+          <span class="eyebrow" style="color:var(--warn)">Admin controls</span>
+          <h2 class="h-md" style="margin-top:10px">Manage vesting</h2>
+        </div>
+        <div class="va-actions">
+          <span class="chip mono">admin · <span id="adminAddr">—</span></span>
+          <button class="btn btn-ghost btn-sm" id="pauseBtn" type="button">Pause</button>
+          <button class="btn btn-ghost btn-sm" id="unpauseBtn" type="button" style="display:none">Resume</button>
+        </div>
+      </div>
+
+      <div class="va-grid">
+        <form class="card va-form" id="avForm" autocomplete="off">
+          <h3 style="font-size:18px">Add vesting</h3>
+          <label class="vest-field"><span>Beneficiary address</span><input id="avBeneficiary" type="text" placeholder="0x…" spellcheck="false" /></label>
+          <div class="va-form-row">
+            <label class="vest-field"><span>Allocation (EXBT)</span><input id="avAllocation" type="text" inputmode="decimal" placeholder="100000" /></label>
+            <label class="vest-field"><span>TGE %</span><input id="avTge" type="number" min="0" max="100" placeholder="10" /></label>
+          </div>
+          <div class="va-form-row">
+            <label class="vest-field"><span>Cliff (periods)</span><input id="avCliff" type="number" min="0" placeholder="6" /></label>
+            <label class="vest-field"><span>Vesting (periods)</span><input id="avVesting" type="number" min="1" placeholder="24" /></label>
+          </div>
+          <button class="btn btn-primary" id="avSubmit" type="submit">Add vesting schedule</button>
+        </form>
+
+        <div class="card va-benef">
+          <h3 style="font-size:18px">Beneficiaries</h3>
+          <div class="ben-head"><span>Address</span><span>Allocation</span><span>Released</span><span>Claimable</span></div>
+          <div id="benList"><div class="vest-empty">Connect as admin to load.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="padding:64px 0 0">
+  <div class="wrap"><div class="divider"></div></div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/vesting.js"></script>
+
+<style>
+/* ---- connect / config bar ---- */
+.vest-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  padding:14px 18px; border:1px solid var(--line-2); border-radius:var(--r-lg);
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); }
+.vest-bar-left, .vest-bar-right { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.vest-net { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:13px; color:var(--text-dim); }
+.vest-addrstate { font-family:var(--font-mono); font-size:12px; letter-spacing:.04em; padding:5px 11px; border-radius:999px; border:1px solid var(--line-2); }
+.vest-addrstate.warn { color:var(--warn); border-color:var(--net-test-line); background:var(--net-test-soft); }
+.vest-addrstate.ok { color:var(--accent-3); border-color:var(--net-main-line); background:var(--net-main-soft); }
+.vest-addrstate.ok a { color:inherit; }
+#acctChip { font-family:var(--font-mono); }
+
+.vest-cfg { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.vest-cfg.open { max-height:260px; }
+.vest-cfg-grid { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; padding:18px 4px 4px; }
+.vest-field { display:flex; flex-direction:column; gap:7px; flex:1; min-width:180px; }
+.vest-field span { font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-mute); }
+.vest-field input, .vest-field select {
+  font-family:var(--font-mono); font-size:14px; color:var(--text);
+  background:rgba(255,255,255,.03); border:1px solid var(--line-2); border-radius:10px; padding:11px 13px;
+  transition:border-color .2s, box-shadow .2s; }
+.vest-field input:focus, .vest-field select:focus { outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--net-main-soft); }
+.vest-cfg-note { font-size:13px; color:var(--text-mute); padding:6px 4px 0; }
+
+/* ---- stats strip ---- */
+.vest-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.vest-stat { border:1px solid var(--line); border-radius:var(--r); padding:18px 20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent); }
+.vs-k { font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-mute); margin-bottom:10px; }
+.vs-v { font-family:var(--font-display); font-weight:600; font-size:24px; letter-spacing:-.02em; }
+.vs-v .u { font-size:13px; color:var(--text-mute); font-family:var(--font-mono); font-weight:400; }
+.vest-pill { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:14px; }
+.vest-pill.live { color:var(--ok); } .vest-pill.live .dot { background:var(--ok); box-shadow:0 0 10px var(--ok); }
+.vest-pill.paused { color:var(--warn); } .vest-pill.paused .dot { background:var(--warn); box-shadow:0 0 10px var(--warn); }
+@media (max-width:820px){ .vest-stats { grid-template-columns:repeat(2,1fr);} }
+
+/* ---- allocation columns ---- */
+.vest-cols { display:grid; grid-template-columns:1.5fr 1fr; gap:22px; align-items:start; }
+@media (max-width:900px){ .vest-cols { grid-template-columns:1fr; } }
+
+.vest-claim { padding:30px 30px 28px; }
+.vc-head { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:20px; }
+.vest-gate { display:flex; flex-direction:column; align-items:flex-start; gap:18px; padding:30px 0 16px; }
+.vest-none-ic { font-size:40px; color:var(--text-mute); line-height:1; }
+
+.vc-amount { display:flex; align-items:baseline; gap:12px; }
+.vc-amount .num { font-family:var(--font-display); font-weight:700; font-size:clamp(46px,7vw,72px); letter-spacing:-.04em; line-height:1; }
+.vc-amount .unit { font-family:var(--font-mono); font-size:18px; color:var(--text-dim); }
+.vc-claim-btn { margin-top:22px; }
+.vc-claim-btn:disabled { opacity:.45; cursor:not-allowed; box-shadow:none; transform:none; }
+
+.vc-progress { margin-top:28px; }
+.vcp-bar { height:12px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid var(--line); overflow:hidden; display:flex; }
+.vcp-bar .seg { height:100%; display:block; transition:width .6s cubic-bezier(.2,.8,.2,1); }
+.seg.claimed { background:linear-gradient(90deg, var(--accent-2), var(--accent)); }
+.seg.releasable { background:repeating-linear-gradient(45deg, var(--accent-3), var(--accent-3) 5px, rgba(214,255,102,.55) 5px, rgba(214,255,102,.55) 10px); }
+.vcp-legend { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:13px; color:var(--text-dim); }
+.vcp-legend span { display:inline-flex; align-items:center; gap:7px; }
+.vcp-legend .lg { width:11px; height:11px; border-radius:3px; }
+.lg.claimed { background:var(--accent); } .lg.releasable { background:var(--accent-3); } .lg.locked { background:rgba(255,255,255,.12); }
+.vcp-pct { margin-left:auto; font-family:var(--font-mono); color:var(--accent-3); }
+
+.vc-keys { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; margin-top:26px; background:var(--line); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; }
+.vk { background:var(--bg-2); padding:16px 18px; }
+.vk-k { display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-mute); margin-bottom:7px; }
+.vk-v { font-family:var(--font-display); font-weight:600; font-size:22px; letter-spacing:-.02em; }
+.vk-v::after { content:" EXBT"; font-family:var(--font-mono); font-size:11px; font-weight:400; color:var(--text-mute); }
+
+/* ---- schedule ---- */
+.vest-sched { padding:28px; }
+.vs-rows { margin-top:18px; }
+.vs-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:13px 0; border-top:1px solid var(--line); }
+.vs-row:first-child { border-top:0; }
+.vs-row .k { font-size:14px; color:var(--text-dim); }
+.vs-row .v { font-family:var(--font-mono); font-size:14px; color:var(--text); }
+.vs-foot { font-size:12.5px; margin-top:16px; }
+
+/* ---- admin ---- */
+.va-head { display:flex; align-items:flex-end; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:24px; }
+.va-actions { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.va-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:22px; align-items:start; }
+@media (max-width:900px){ .va-grid { grid-template-columns:1fr; } }
+.va-form { display:flex; flex-direction:column; gap:14px; padding:26px; }
+.va-form-row { display:flex; gap:14px; }
+.va-form .btn { margin-top:6px; }
+.va-benef { padding:26px; }
+.ben-head, .ben-row { display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:10px; align-items:center; }
+.ben-head { font-family:var(--font-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-mute); padding:16px 0 12px; border-bottom:1px solid var(--line); }
+.ben-row { padding:13px 0; border-bottom:1px solid var(--line); font-size:13px; }
+.ben-addr { color:var(--accent-3); }
+.ben-num { font-family:var(--font-mono); font-size:13px; text-align:right; }
+.ben-num.dim { color:var(--text-mute); } .ben-num.accent { color:var(--accent-3); }
+.vest-empty, .vest-spin { color:var(--text-mute); font-size:14px; padding:18px 0; }
+
+#benList { max-height:340px; overflow-y:auto; }
+</style>
+</body>
+</html>

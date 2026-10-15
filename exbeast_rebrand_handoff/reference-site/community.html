@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Community &amp; Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<header class="page-hero">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal" style="justify-content:center">Community</span>
+    <h1 class="reveal" data-d="1" style="margin-top:14px">Built by everyone,<br/>owned by everyone</h1>
+    <p class="lead reveal" data-d="2" style="margin:18px auto 0">Join thousands of builders, stakers and believers shaping ExBeast. Jump into the conversation, follow the latest, and help govern the chain.</p>
+    <div class="hero-cta reveal" data-d="3" style="justify-content:center;margin-top:26px">
+      <a href="#" class="btn btn-primary">Join Discord</a>
+      <a href="#" class="btn btn-ghost">Follow on X</a>
+    </div>
+  </div>
+</header>
+
+<!-- COMMUNITY STATS -->
+<section class="wrap" style="margin-top:30px">
+  <div class="stat-strip reveal" style="border-radius:var(--r-lg)">
+    <div class="statbox"><div class="big">38K</div><div class="lab">Discord members</div></div>
+    <div class="statbox"><div class="big">62K</div><div class="lab">X followers</div></div>
+    <div class="statbox"><div class="big">1,840</div><div class="lab">Stakers</div></div>
+    <div class="statbox"><div class="big">90+</div><div class="lab">Countries</div></div>
+  </div>
+</section>
+
+<!-- CHANNELS -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:34px"><span class="eyebrow">Where we gather</span><h2 class="h-lg" style="margin-top:14px">Find your channel</h2></div>
+    <div class="grid cols-4">
+      <a href="#" class="card reveal" data-d="1" style="padding:28px;display:block"><div class="eco-icon" style="width:46px;height:46px">✕</div><h3 style="font-size:19px;margin-top:16px">X / Twitter</h3><p class="text-dim" style="font-size:14px;margin-top:6px">News, alpha and announcements.</p></a>
+      <a href="#" class="card reveal" data-d="2" style="padding:28px;display:block"><div class="eco-icon" style="width:46px;height:46px">◓</div><h3 style="font-size:19px;margin-top:16px">Discord</h3><p class="text-dim" style="font-size:14px;margin-top:6px">Builder support and daily chat.</p></a>
+      <a href="#" class="card reveal" data-d="3" style="padding:28px;display:block"><div class="eco-icon" style="width:46px;height:46px">✈</div><h3 style="font-size:19px;margin-top:16px">Telegram</h3><p class="text-dim" style="font-size:14px;margin-top:6px">Real-time community discussion.</p></a>
+      <a href="#" class="card reveal" data-d="4" style="padding:28px;display:block"><div class="eco-icon" style="width:46px;height:46px">⬡</div><h3 style="font-size:19px;margin-top:16px">Governance</h3><p class="text-dim" style="font-size:14px;margin-top:6px">Propose and vote on the future.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px">
+      <div><span class="eyebrow">From the blog</span><h2 class="h-lg" style="margin-top:14px">Latest updates</h2></div>
+      <a href="#" class="btn btn-ghost">View all posts</a>
+    </div>
+    <div class="grid cols-3">
+      <a href="#" class="card post-card reveal" data-d="1"><div class="thumb"><span class="glyph">⬡</span></div><div class="body"><div class="meta">Announcement · May 2026</div><h3>ExBeast Testnet is live on Chain ID 11211</h3><p>Our public testnet is open. Add the network, grab faucet EXBT, and deploy your first contract today.</p></div></a>
+      <a href="#" class="card post-card reveal" data-d="2"><div class="thumb"><span class="glyph">◈</span></div><div class="body"><div class="meta">Deep dive · May 2026</div><h3>Why we converged AI, DeFi and SocialFi</h3><p>The thesis behind a single settlement layer for the next generation of on-chain apps.</p></div></a>
+      <a href="#" class="card post-card reveal" data-d="3"><div class="thumb"><span class="glyph">🔒</span></div><div class="body"><div class="meta">Product · Apr 2026</div><h3>Staking design: earning 8% APY safely</h3><p>How non-custodial staking secures ExBeast and rewards long-term holders.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div><h2 class="h-md">Stay in the loop</h2><p class="text-dim" style="margin-top:8px">Monthly updates on releases, grants and ecosystem launches.</p></div>
+      <form class="hero-cta" id="news" style="gap:10px" onsubmit="return false">
+        <input class="field" id="email" type="email" placeholder="you@email.com" style="padding:13px 18px;font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--text);min-width:240px" />
+        <button class="btn btn-primary" id="sub">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+document.getElementById("sub").addEventListener("click", function () {
+  var e = document.getElementById("email");
+  if (e.value && e.value.indexOf("@") > 0) { window.toast("Subscribed", "Welcome to the ExBeast community"); e.value = ""; }
+  else { window.toast("Enter a valid email", ""); }
+});
+</script>
+</body>
+</html>

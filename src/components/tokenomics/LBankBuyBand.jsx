@@ -11,7 +11,7 @@ const BAND_STYLE = {
   borderRadius: '32px',
   border: '1px solid rgba(244,194,75,.30)',
   background:
-    'radial-gradient(120% 160% at 100% 0%, rgba(244,194,75,.10), transparent 60%), linear-gradient(110deg, rgba(157,92,255,.08), rgba(20,13,38,.4))',
+    'radial-gradient(120% 160% at 100% 0%, rgba(244,194,75,.10), transparent 60%), linear-gradient(110deg, rgba(191,255,0,.08), rgba(16,20,12,.4))',
 };
 
 const CARD_STYLE = {
@@ -21,7 +21,7 @@ const CARD_STYLE = {
   padding: '22px 24px',
   borderRadius: '24px',
   border: '1px solid rgba(244,194,75,.34)',
-  background: 'linear-gradient(100deg, rgba(244,194,75,.12), rgba(157,92,255,.08))',
+  background: 'linear-gradient(100deg, rgba(244,194,75,.12), rgba(191,255,0,.08))',
   boxShadow: '0 18px 50px -26px rgba(244,194,75,.55)',
   flex: '0 1 420px',
   textDecoration: 'none',
@@ -54,7 +54,7 @@ export default function LBankBuyBand() {
                 fontSize: '12px',
                 letterSpacing: '.32em',
                 textTransform: 'uppercase',
-                color: '#D6B4FF',
+                color: '#D6FF66',
                 display: 'block',
                 marginBottom: '12px',
               }}
@@ -66,7 +66,7 @@ export default function LBankBuyBand() {
                 fontFamily: 'var(--font-display)',
                 fontWeight: 600,
                 fontSize: 'clamp(26px, 3vw, 40px)',
-                color: '#F2ECFF',
+                color: '#F3F7EC',
                 lineHeight: 1.08,
                 margin: '0 0 14px',
                 letterSpacing: '-0.03em',
@@ -78,7 +78,7 @@ export default function LBankBuyBand() {
               style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: '15.5px',
-                color: '#B7A9D8',
+                color: '#AEB8A2',
                 maxWidth: '40ch',
                 lineHeight: 1.6,
               }}
@@ -133,15 +133,15 @@ export default function LBankBuyBand() {
                   fontFamily: 'var(--font-display)',
                   fontWeight: 700,
                   fontSize: '18px',
-                  color: '#F2ECFF',
+                  color: '#F3F7EC',
                   marginBottom: '4px',
                 }}
               >
                 LBank Exchange
               </div>
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13.5px' }}>
-                <span style={{ color: '#B7A9D8' }}>EXBT</span>
-                <span style={{ color: '#D6B4FF' }}>/USDT</span>
+                <span style={{ color: '#AEB8A2' }}>EXBT</span>
+                <span style={{ color: '#D6FF66' }}>/USDT</span>
               </div>
             </div>
 

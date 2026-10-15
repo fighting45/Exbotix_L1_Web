@@ -12,7 +12,7 @@ export default function Mission() {
           </Reveal>
           <Reveal delay={2}>
             <p className="lead" style={{ marginTop: '18px' }}>
-              Exbotix exists to give builders a single, modern home for the next era of decentralized apps — where AI, exchanges, DeFi and SocialFi finally share one efficient settlement layer.
+              ExBeast exists to give builders a single, modern home for the next era of decentralized apps — where AI, exchanges, DeFi and SocialFi finally share one efficient settlement layer.
             </p>
           </Reveal>
         </div>
@@ -35,7 +35,7 @@ export default function Mission() {
               <span className="eyebrow">Our vision</span>
               <h2 className="h-md" style={{ margin: '16px 0 14px' }}>A converged on-chain world</h2>
               <p className="text-dim" style={{ fontSize: '16px' }}>
-                A future where AI agents, CEX-grade liquidity, DeFi and social all live together on Exbotix — interoperable by default, governed by the people who use it, and accessible to everyone.
+                A future where AI agents, CEX-grade liquidity, DeFi and social all live together on ExBeast — interoperable by default, governed by the people who use it, and accessible to everyone.
               </p>
             </div>
           </Reveal>
@@ -119,7 +119,7 @@ export default function Mission() {
               <div className="tl-item">
                 <div className="q">Q2 2026 · Now</div>
                 <h3>Public testnet</h3>
-                <p>Exbotix Testnet live on Chain ID 11211 with block explorer, faucet and the first developer toolkit.</p>
+                <p>ExBeast Testnet live on Chain ID 11211 with block explorer, faucet and the first developer toolkit.</p>
                 <div className="tag-row">
                   <span className="chip">Chain ID 11211</span>
                   <span className="chip">Explorer</span>
@@ -157,7 +157,7 @@ export default function Mission() {
           <Reveal>
             <div className="cta-band">
               <div>
-                <h2 className="h-md">Help shape Exbotix</h2>
+                <h2 className="h-md">Help shape ExBeast</h2>
                 <p className="text-dim" style={{ marginTop: '8px' }}>Governance is open. Bring your ideas to the community.</p>
               </div>
               <div className="hero-cta">

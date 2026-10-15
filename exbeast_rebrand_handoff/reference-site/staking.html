@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Staking · 8% APY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<header class="page-hero">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal" style="justify-content:center">Staking</span>
+    <h1 class="reveal" data-d="1" style="margin-top:14px">Earn <span class="gradtext">8% APY</span>.<br/>Secure the network.</h1>
+    <p class="lead reveal" data-d="2" style="margin:18px auto 0">Stake EXBT to help secure ExBeast and earn rewards in real time. Non-custodial, no lockups on the testnet — unstake whenever you like.</p>
+  </div>
+</header>
+
+<section style="padding:30px 0 50px">
+  <div class="wrap app-shell" style="max-width:560px">
+    <!-- network staking stats -->
+    <div class="stake-stats reveal">
+      <div class="b"><div class="v accent">8%</div><div class="l">APY</div></div>
+      <div class="b"><div class="v">14.2M</div><div class="l">EXBT staked</div></div>
+      <div class="b"><div class="v">1,840</div><div class="l">Stakers</div></div>
+    </div>
+
+    <div class="app-card reveal" data-d="1">
+      <!-- GATE (no wallet) -->
+      <div id="gate" class="gate">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18"/></svg></div>
+        <h3 class="h-md" style="font-size:24px">Connect your wallet</h3>
+        <p class="text-dim" style="margin:10px auto 22px;max-width:34ch">Connect a wallet to stake EXBT and start earning 8% APY.</p>
+        <button class="btn btn-primary" id="gateConnect" style="padding:14px 26px">Connect Wallet</button>
+      </div>
+
+      <!-- STAKING APP -->
+      <div id="app" style="display:none">
+        <div class="app-tabs"><button class="active" data-tab="stake">Stake</button><button data-tab="unstake">Unstake</button></div>
+
+        <div class="kvs" style="margin-top:0;border-style:solid;background:rgba(191,255,0,.04)">
+          <div class="kv"><span class="k">Your staked</span><span class="v accent" id="staked">0.00 EXBT</span></div>
+          <div class="kv"><span class="k">Pending rewards</span><span class="v" id="rewards" style="color:var(--ok)">0.000000 EXBT</span></div>
+          <div class="kv"><span class="k">Available</span><span class="v" id="avail">0.00 EXBT</span></div>
+        </div>
+
+        <div class="field" style="margin-top:16px">
+          <div class="lab"><span id="fieldLab">Amount to stake</span><span id="maxLine">Max: 0.00</span></div>
+          <div class="row"><input id="amt" type="text" inputmode="decimal" placeholder="0.0" /><span class="asset-pill" style="cursor:default"><span class="glyph">E</span>EXBT</span></div>
+          <div class="pct-row"><button data-pct="25">25%</button><button data-pct="50">50%</button><button data-pct="75">75%</button><button data-pct="100">MAX</button></div>
+        </div>
+
+        <button class="btn btn-primary" id="action" style="width:100%;justify-content:center;margin-top:16px;padding:15px">Stake EXBT</button>
+        <button class="btn btn-ghost" id="claim" style="width:100%;justify-content:center;margin-top:10px">Claim rewards</button>
+      </div>
+    </div>
+
+    <div class="feature-list reveal" data-d="2" style="margin-top:32px">
+      <div class="fi"><div class="ic">✓</div><div><h4>Rewards accrue every second</h4><p>Watch your pending rewards tick up live, based on an 8% annualized rate.</p></div></div>
+      <div class="fi"><div class="ic">✓</div><div><h4>Non-custodial &amp; flexible</h4><p>Your stake stays yours. Unstake any portion at any time on testnet.</p></div></div>
+      <div class="fi"><div class="ic">✓</div><div><h4>Secures ExBeast</h4><p>Staked EXBT strengthens the network and earns you a share of emissions.</p></div></div>
+    </div>
+    <p class="text-mute reveal" style="text-align:center;font-size:13px;margin-top:24px">Testnet demo — balances and rewards are simulated locally.</p>
+  </div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var APY = 0.08;
+  var gate = document.getElementById("gate"), app = document.getElementById("app");
+  var stakedEl = document.getElementById("staked"), rewardsEl = document.getElementById("rewards"), availEl = document.getElementById("avail");
+  var amt = document.getElementById("amt"), action = document.getElementById("action"), fieldLab = document.getElementById("fieldLab"), maxLine = document.getElementById("maxLine");
+  var tab = "stake";
+
+  function bal(){ return parseFloat(localStorage.getItem("exbt_bal") || "0"); }
+  function setBal(v){ localStorage.setItem("exbt_bal", v.toFixed(4)); }
+  function staked(){ return parseFloat(localStorage.getItem("exbt_staked") || "0"); }
+  function setStaked(v){ localStorage.setItem("exbt_staked", v.toFixed(6)); }
+  function rewards(){ return parseFloat(localStorage.getItem("exbt_rewards") || "0"); }
+  function setRewards(v){ localStorage.setItem("exbt_rewards", v.toFixed(8)); }
+  function lastTs(){ return parseFloat(localStorage.getItem("exbt_ts") || Date.now()); }
+
+  function accrue() {
+    var now = Date.now(), dt = (now - lastTs()) / 1000;
+    if (dt > 0 && staked() > 0) {
+      var perSec = staked() * APY / (365 * 24 * 3600);
+      setRewards(rewards() + perSec * dt);
+    }
+    localStorage.setItem("exbt_ts", now);
+  }
+
+  function render() {
+    if (!window.ExWallet.connected) { gate.style.display = "block"; app.style.display = "none"; return; }
+    gate.style.display = "none"; app.style.display = "block";
+    stakedEl.textContent = staked().toFixed(2) + " EXBT";
+    rewardsEl.textContent = rewards().toFixed(6) + " EXBT";
+    availEl.textContent = bal().toFixed(2) + " EXBT";
+    var max = tab === "stake" ? bal() : staked();
+    maxLine.textContent = "Max: " + max.toFixed(2);
+    fieldLab.textContent = tab === "stake" ? "Amount to stake" : "Amount to unstake";
+    action.textContent = tab === "stake" ? "Stake EXBT" : "Unstake EXBT";
+  }
+
+  document.getElementById("gateConnect").addEventListener("click", function(){ window.ExWallet.connect(); });
+
+  document.querySelectorAll(".app-tabs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".app-tabs button").forEach(function(x){ x.classList.remove("active"); });
+      b.classList.add("active"); tab = b.dataset.tab; amt.value = ""; render();
+    });
+  });
+  document.querySelectorAll(".pct-row button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var max = tab === "stake" ? bal() : staked();
+      amt.value = (max * (+b.dataset.pct) / 100).toFixed(2);
+    });
+  });
+
+  action.addEventListener("click", function () {
+    var v = parseFloat(amt.value) || 0;
+    accrue();
+    if (tab === "stake") {
+      if (v <= 0 || v > bal()) { window.toast("Invalid amount", "Check your available balance"); return; }
+      setBal(bal() - v); setStaked(staked() + v);
+      window.toast("Staked", v.toFixed(2) + " EXBT now earning 8% APY");
+    } else {
+      if (v <= 0 || v > staked()) { window.toast("Invalid amount", "Check your staked balance"); return; }
+      setStaked(staked() - v); setBal(bal() + v);
+      window.toast("Unstaked", v.toFixed(2) + " EXBT returned to wallet");
+    }
+    amt.value = ""; render();
+  });
+
+  document.getElementById("claim").addEventListener("click", function () {
+    accrue();
+    var r = rewards();
+    if (r <= 0) { window.toast("Nothing to claim", "Stake EXBT to start earning"); return; }
+    setBal(bal() + r); setRewards(0);
+    window.toast("Rewards claimed", r.toFixed(6) + " EXBT added to your wallet");
+    render();
+  });
+
+  window.addEventListener("wallet:change", function(){ accrue(); render(); });
+
+  // live ticking
+  setInterval(function () {
+    if (!window.ExWallet.connected) return;
+    accrue();
+    if (staked() > 0) rewardsEl.textContent = rewards().toFixed(6) + " EXBT";
+  }, 1000);
+
+  accrue(); render();
+})();
+</script>
+</body>
+</html>

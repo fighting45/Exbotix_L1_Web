@@ -5,7 +5,7 @@ export default function Bridge() {
     <>
       <header className="page-hero">
         <div className="wrap" style={{ textAlign: 'center' }}>
-          <Reveal><span className="eyebrow" style={{ justifyContent: 'center' }}>Exbotix Bridge</span></Reveal>
+          <Reveal><span className="eyebrow" style={{ justifyContent: 'center' }}>ExBeast Bridge</span></Reveal>
           <Reveal delay={1}><h1 style={{ marginTop: '14px' }}>Cross-Chain Bridge</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead" style={{ margin: '18px auto 0', maxWidth: '50ch' }}>

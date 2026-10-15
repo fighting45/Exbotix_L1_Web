@@ -15,7 +15,7 @@ export default function Docs() {
         <div className="wrap">
           <Reveal><span className="eyebrow">Developer Documentation</span></Reveal>
           <div className="page-hero-row" style={{ marginTop: '14px' }}>
-            <Reveal delay={1}><h1>Build on Exbotix<br/>in minutes</h1></Reveal>
+            <Reveal delay={1}><h1>Build on ExBeast<br/>in minutes</h1></Reveal>
             <Reveal delay={2}>
               <p className="lead" style={{ maxWidth: '40ch' }}>
                 EVM-equivalent and tooling-compatible. Bring your Solidity, point at our RPC, and deploy. Here's everything you need to get started.
@@ -52,7 +52,7 @@ export default function Docs() {
 
           <div className="docs-main">
             <h2 id="overview">Overview</h2>
-            <p>Exbotix is an EVM-compatible Layer 1 blockchain that converges AI, exchange infrastructure, DeFi and SocialFi into a single programmable ecosystem. Because Exbotix is EVM-equivalent, any contract, tool, or wallet that works with Ethereum works here with no code changes.</p>
+            <p>ExBeast is an EVM-compatible Layer 1 blockchain that converges AI, exchange infrastructure, DeFi and SocialFi into a single programmable ecosystem. Because ExBeast is EVM-equivalent, any contract, tool, or wallet that works with Ethereum works here with no code changes.</p>
             <ul>
               <li><b>Gas token:</b> EXBT</li>
               <li><b>Block time:</b> ~12.8 seconds · ~100 TPS</li>
@@ -60,7 +60,7 @@ export default function Docs() {
             </ul>
 
             <h2 id="network">Network parameters</h2>
-            <p>Exbotix runs two networks. Use <b style={{ color: 'var(--accent-3)' }}>Mainnet</b> for production deployments and real value, and <b style={{ color: 'var(--net-test)' }}>Testnet</b> for free, risk-free experimentation. Add either to any EVM wallet with the values below.</p>
+            <p>ExBeast runs two networks. Use <b style={{ color: 'var(--accent-3)' }}>Mainnet</b> for production deployments and real value, and <b style={{ color: 'var(--net-test)' }}>Testnet</b> for free, risk-free experimentation. Add either to any EVM wallet with the values below.</p>
             <div className="net-grid">
               <div className="net-card">
                 <div className="net-head">
@@ -110,7 +110,7 @@ export default function Docs() {
             </div>
 
             <h2 id="quickstart">Quickstart</h2>
-            <p>Configure your project to target Exbotix in seconds.</p>
+            <p>Configure your project to target ExBeast in seconds.</p>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
                 <span className="d" style={{ background: '#FF5F57' }}></span>
@@ -122,7 +122,7 @@ export default function Docs() {
             </div>
 
             <h2 id="deploy">Deploy a contract</h2>
-            <p>Add Exbotix to your <span className="mono">hardhat.config.js</span> and deploy exactly as you would on any EVM chain.</p>
+            <p>Add ExBeast to your <span className="mono">hardhat.config.js</span> and deploy exactly as you would on any EVM chain.</p>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
                 <span className="d" style={{ background: '#FF5F57' }}></span>
@@ -143,7 +143,7 @@ export default function Docs() {
             </div>
 
             <h2 id="rpc">RPC methods</h2>
-            <p>Exbotix supports the standard Ethereum JSON-RPC API on both networks — point at <span className="mono">rpc.exbotix.net</span> for Mainnet or <span className="mono">testnet_rpc.exbotix.net</span> for Testnet. A few common calls:</p>
+            <p>ExBeast supports the standard Ethereum JSON-RPC API on both networks — point at <span className="mono">rpc.exbotix.net</span> for Mainnet or <span className="mono">testnet_rpc.exbotix.net</span> for Testnet. A few common calls:</p>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
                 <span className="d" style={{ background: '#FF5F57' }}></span>

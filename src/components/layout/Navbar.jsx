@@ -19,8 +19,8 @@ export default function Navbar() {
 
   return (
     <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
-      <Link to="/" className="brand" aria-label="Exbotix home">
-        <img className="brand-mark" src="/assets/img/exbotix-full.png" alt="Exbotix" />
+      <Link to="/" className="brand" aria-label="ExBeast home">
+        <img className="brand-mark" src="/assets/img/exbeast-logo.png" alt="ExBeast" />
       </Link>
 
       <div className={`nav-links ${mobileOpen ? 'open' : ''}`}>
@@ -48,7 +48,7 @@ export default function Navbar() {
           </div>
         ))}
         <NavLink className="nav-link tok" to="/tokenomics">
-          <img src="https://exbotix-prod.s3.ap-south-1.amazonaws.com/EXBT/EXBT+coin+Final.png" alt="EXBT" style={{ height: '24px', width: '24px', verticalAlign: 'middle', marginRight: '3px' }} />
+          <img src="/assets/img/exbt-coin.png" alt="EXBT" style={{ height: '24px', width: '24px', verticalAlign: 'middle', marginRight: '3px' }} />
           EXBT
         </NavLink>
       </div>

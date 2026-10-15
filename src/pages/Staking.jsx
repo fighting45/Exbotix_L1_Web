@@ -17,7 +17,7 @@ export default function Staking() {
           </Reveal>
           <Reveal delay={2}>
             <p className="lead" style={{ margin: '18px auto 0' }}>
-              Stake EXBT to help secure Exbotix and earn rewards in real time.
+              Stake EXBT to help secure ExBeast and earn rewards in real time.
               Non-custodial, no lockups — unstake whenever you like.
             </p>
           </Reveal>
@@ -32,12 +32,12 @@ export default function Staking() {
                 width: '80px',
                 height: '80px',
                 margin: '0 auto 24px',
-                background: 'linear-gradient(135deg, rgba(157,92,255,0.2), rgba(199,125,255,0.1))',
+                background: 'linear-gradient(135deg, rgba(191,255,0,0.2), rgba(214,255,102,0.1))',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: '2px solid rgba(157,92,255,0.3)'
+                border: '2px solid rgba(191,255,0,0.3)'
               }}>
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" />
@@ -56,7 +56,7 @@ export default function Staking() {
                 margin: '0 auto 32px',
                 lineHeight: '1.6'
               }}>
-                Staking on Exbotix Mainnet will be available soon. Earn 8% APY while securing the network. Stay tuned for updates!
+                Staking on ExBeast Mainnet will be available soon. Earn 8% APY while securing the network. Stay tuned for updates!
               </p>
 
               <div style={{
@@ -77,8 +77,8 @@ export default function Staking() {
               <div style={{
                 marginTop: '40px',
                 padding: '20px',
-                background: 'rgba(157,92,255,0.05)',
-                border: '1px solid rgba(157,92,255,0.2)',
+                background: 'rgba(191,255,0,0.05)',
+                border: '1px solid rgba(191,255,0,0.2)',
                 borderRadius: 'var(--r-md)'
               }}>
                 <div style={{

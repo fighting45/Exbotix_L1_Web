@@ -100,20 +100,20 @@ export default function RobotAssembly() {
 
           {/* ROBOT */}
           <div className="robot-wrap">
-            <svg viewBox="0 0 520 560" aria-label="Exbotix mech assembling">
+            <svg viewBox="0 0 520 560" aria-label="ExBeast mech assembling">
               <defs>
                 <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stopColor="#2A1D4A" />
-                  <stop offset="1" stopColor="#140C28" />
+                  <stop offset="0" stopColor="#222A1A" />
+                  <stop offset="1" stopColor="#10140C" />
                 </linearGradient>
                 <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stopColor="#B98CFF" />
-                  <stop offset="1" stopColor="#7A5CFF" />
+                  <stop offset="0" stopColor="#C8F23A" />
+                  <stop offset="1" stopColor="#8FCC00" />
                 </linearGradient>
                 <radialGradient id="reactor" cx="50%" cy="50%" r="50%">
-                  <stop offset="0" stopColor="#F3E8FF" />
-                  <stop offset="35%" stopColor="#B98CFF" />
-                  <stop offset="100" stopColor="#5B3CC4" />
+                  <stop offset="0" stopColor="#F4FAE6" />
+                  <stop offset="35%" stopColor="#C8F23A" />
+                  <stop offset="100" stopColor="#557F00" />
                 </radialGradient>
                 <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
                   <feGaussianBlur stdDeviation="7" result="b" />
@@ -126,22 +126,22 @@ export default function RobotAssembly() {
 
               {/* BASE */}
               <g id="r-base" style={getPartStyle('r-base')}>
-                <ellipse cx="260" cy="510" rx="150" ry="26" fill="#140C28" stroke="var(--line-2)" strokeWidth="1" />
+                <ellipse cx="260" cy="510" rx="150" ry="26" fill="#10140C" stroke="var(--line-2)" strokeWidth="1" />
                 <path d="M150 505 L260 480 L370 505 L260 528 Z" fill="url(#metal)" stroke="url(#edge)" strokeWidth="1.5" />
               </g>
 
               {/* TORSO */}
               <g id="r-torso" style={getPartStyle('r-torso')}>
                 <path d="M180 300 L340 300 L320 470 L200 470 Z" fill="url(#metal)" stroke="url(#edge)" strokeWidth="2" />
-                <path d="M210 330 H310 M205 370 H315 M212 410 H308" stroke="rgba(185,140,255,.35)" strokeWidth="1.5" />
-                <path d="M232 440 L288 440 L280 462 L240 462 Z" fill="#140C28" stroke="rgba(185,140,255,.4)" strokeWidth="1.5" />
+                <path d="M210 330 H310 M205 370 H315 M212 410 H308" stroke="rgba(200,242,58,.35)" strokeWidth="1.5" />
+                <path d="M232 440 L288 440 L280 462 L240 462 Z" fill="#10140C" stroke="rgba(200,242,58,.4)" strokeWidth="1.5" />
               </g>
 
               {/* CORE / REACTOR */}
               <g id="r-core" filter="url(#glow)" style={getPartStyle('r-core')}>
                 <circle cx="260" cy="360" r="34" fill="url(#reactor)" />
                 <circle cx="260" cy="360" r="44" fill="none" stroke="url(#edge)" strokeWidth="2.5" />
-                <circle cx="260" cy="360" r="44" fill="none" stroke="#B98CFF" strokeWidth="1" strokeDasharray="6 10">
+                <circle cx="260" cy="360" r="44" fill="none" stroke="#C8F23A" strokeWidth="1" strokeDasharray="6 10">
                   <animateTransform attributeName="transform" type="rotate" from="0 260 360" to="360 260 360" dur="9s" repeatCount="indefinite" />
                 </circle>
               </g>
@@ -157,11 +157,11 @@ export default function RobotAssembly() {
               {/* ARMS */}
               <g id="r-armL" style={getPartStyle('r-armL')}>
                 <path d="M118 320 L160 330 L150 455 L108 445 Z" fill="url(#metal)" stroke="url(#edge)" strokeWidth="2" />
-                <circle cx="129" cy="450" r="14" fill="#140C28" stroke="url(#edge)" strokeWidth="2" />
+                <circle cx="129" cy="450" r="14" fill="#10140C" stroke="url(#edge)" strokeWidth="2" />
               </g>
               <g id="r-armR" style={getPartStyle('r-armR')}>
                 <path d="M402 320 L360 330 L370 455 L412 445 Z" fill="url(#metal)" stroke="url(#edge)" strokeWidth="2" />
-                <circle cx="391" cy="450" r="14" fill="#140C28" stroke="url(#edge)" strokeWidth="2" />
+                <circle cx="391" cy="450" r="14" fill="#10140C" stroke="url(#edge)" strokeWidth="2" />
               </g>
 
               {/* NECK */}
@@ -172,16 +172,16 @@ export default function RobotAssembly() {
               {/* HEAD */}
               <g id="r-head" style={getPartStyle('r-head')}>
                 <path d="M205 165 L315 165 L330 225 L300 280 L220 280 L190 225 Z" fill="url(#metal)" stroke="url(#edge)" strokeWidth="2.5" />
-                <rect x="218" y="200" width="84" height="34" rx="8" fill="#0A0613" stroke="rgba(185,140,255,.5)" strokeWidth="1.5" />
-                <circle className="r-eye" cx="240" cy="217" r="7" fill="#B98CFF" style={{ opacity: progress > 0.68 ? 1 : 0.12, transition: 'opacity .4s' }} />
-                <circle className="r-eye" cx="280" cy="217" r="7" fill="#B98CFF" style={{ opacity: progress > 0.68 ? 1 : 0.12, transition: 'opacity .4s' }} />
-                <path d="M212 250 H308" stroke="rgba(185,140,255,.4)" strokeWidth="1.5" />
+                <rect x="218" y="200" width="84" height="34" rx="8" fill="#080A06" stroke="rgba(200,242,58,.5)" strokeWidth="1.5" />
+                <circle className="r-eye" cx="240" cy="217" r="7" fill="#C8F23A" style={{ opacity: progress > 0.68 ? 1 : 0.12, transition: 'opacity .4s' }} />
+                <circle className="r-eye" cx="280" cy="217" r="7" fill="#C8F23A" style={{ opacity: progress > 0.68 ? 1 : 0.12, transition: 'opacity .4s' }} />
+                <path d="M212 250 H308" stroke="rgba(200,242,58,.4)" strokeWidth="1.5" />
               </g>
 
               {/* ANTENNA */}
               <g id="r-antenna" style={getPartStyle('r-antenna')}>
                 <path d="M260 165 V120" stroke="url(#edge)" strokeWidth="2.5" />
-                <circle cx="260" cy="114" r="6" fill="#B98CFF" filter="url(#glow)" />
+                <circle cx="260" cy="114" r="6" fill="#C8F23A" filter="url(#glow)" />
               </g>
             </svg>
           </div>

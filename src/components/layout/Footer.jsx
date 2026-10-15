@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <Link to="/" className="brand" style={{ fontSize: '22px' }}>
-              <img className="brand-mark" src="/assets/img/exbotix-full.png" alt="Exbotix" />
+              <img className="brand-mark" src="/assets/img/exbeast-logo.png" alt="ExBeast" />
             </Link>
             <p className="text-dim" style={{ marginTop: '16px', maxWidth: '34ch', fontSize: '14.5px' }}>
               A diverse Layer 1 ecosystem converging AI, CEX, DeFi and SocialFi.
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 Exbotix. Testnet live — figures illustrative.</span>
+          <span>© 2026 ExBeast. Testnet live — figures illustrative.</span>
           <span className="mono">Mainnet · ID 11311 &nbsp;·&nbsp; Testnet · ID 11211</span>
         </div>
       </div>

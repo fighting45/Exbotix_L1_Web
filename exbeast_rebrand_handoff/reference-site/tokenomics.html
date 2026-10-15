@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — Tokenomics · EXBT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/pages.css" />
+<style>
+  .buy-band {
+    display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;
+    padding:34px 38px; border-radius:var(--r-xl);
+    border:1px solid rgba(244,194,75,.30);
+    background:
+      radial-gradient(120% 160% at 100% 0%, rgba(244,194,75,.10), transparent 60%),
+      linear-gradient(110deg, rgba(191,255,0,.08), rgba(16,20,12,.4));
+  }
+  .buy-intro { flex:1 1 320px; }
+  .exchange-card {
+    flex:0 1 420px; display:flex; align-items:center; gap:20px;
+    padding:22px 24px; border-radius:var(--r-lg);
+    border:1px solid rgba(244,194,75,.34);
+    background:linear-gradient(100deg, rgba(244,194,75,.12), rgba(191,255,0,.08));
+    box-shadow:0 18px 50px -26px rgba(244,194,75,.55);
+    transition:transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .exchange-card:hover { transform:translateY(-3px); border-color:rgba(244,194,75,.6); box-shadow:0 26px 60px -24px rgba(244,194,75,.6); }
+  .ex-badge {
+    flex:none; width:58px; height:58px; border-radius:15px; display:grid; place-items:center;
+    background:linear-gradient(150deg,#F4C24B,#C8932B);
+    box-shadow:0 0 0 1px rgba(244,194,75,.5), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .ex-badge svg { width:30px; height:30px; }
+  .ex-body { flex:1; display:flex; flex-direction:column; line-height:1.1; }
+  .ex-k { font-family:var(--font-mono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#F4C24B; }
+  .ex-name { font-family:var(--font-display); font-weight:700; font-size:18px; margin-top:5px; color:var(--text); }
+  .ex-pair { font-family:var(--font-mono); font-size:13.5px; letter-spacing:.06em; margin-top:5px; color:var(--text-dim); }
+  .ex-pair span { color:var(--accent-3); }
+  .ex-go {
+    flex:none; display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--font-display); font-weight:600; font-size:14px; color:#F4C24B;
+  }
+  @media (max-width:560px){ .exchange-card { flex-direction:column; align-items:flex-start; text-align:left; } .ex-go { align-self:stretch; justify-content:center; } }
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<!-- ===================== HERO ===================== -->
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Tokenomics · EXBT</span>
+    <div class="page-hero-row" style="margin-top:14px">
+      <h1 class="reveal" data-d="1">A token built<br/>to power an ecosystem</h1>
+      <p class="lead reveal" data-d="2" style="max-width:42ch">EXBT is the heartbeat of ExBeast — fueling gas, securing the network through staking, and handing governance to the community. A fixed supply, transparently allocated.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== SUPPLY STATS ===================== -->
+<section class="wrap" style="margin-top:30px">
+  <div class="stat-strip reveal" style="border-radius:var(--r-lg)">
+    <div class="statbox"><div class="big">92M</div><div class="lab">Max supply</div></div>
+    <div class="statbox"><div class="big">EXBT</div><div class="lab">Ticker</div></div>
+    <div class="statbox"><div class="big">8%</div><div class="lab">Staking APY</div></div>
+    <div class="statbox"><div class="big">PoW</div><div class="lab">Consensus</div></div>
+  </div>
+</section>
+
+<!-- ===================== WHERE TO BUY ===================== -->
+<section class="wrap" style="margin-top:34px">
+  <div class="buy-band reveal">
+    <div class="buy-intro">
+      <span class="eyebrow">Where to buy EXBT</span>
+      <h2 class="h-md" style="margin:12px 0 10px">EXBT is live and tradeable</h2>
+      <p class="text-dim" style="max-width:40ch;font-size:15.5px">Get EXBT on LBank with the EXBT/USDT spot pair — deep liquidity, instant settlement, available worldwide.</p>
+    </div>
+    <a class="exchange-card" href="https://www.lbank.com/trade/exbt_usdt" target="_blank" rel="noopener">
+      <span class="ex-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a1206" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      </span>
+      <span class="ex-body">
+        <span class="ex-k">Now listing on</span>
+        <span class="ex-name">LBank Exchange</span>
+        <span class="ex-pair">EXBT<span>/USDT</span></span>
+      </span>
+      <span class="ex-go">Trade now
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ===================== DONUT ===================== -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <span class="eyebrow" style="justify-content:center">Distribution</span>
+      <h2 class="h-lg" style="margin-top:14px">How 92,000,000 EXBT is allocated</h2>
+    </div>
+    <div class="token-grid">
+      <div class="reveal">
+        <div class="donut-wrap">
+          <svg viewBox="0 0 320 320" id="donut" aria-label="Token allocation donut chart"></svg>
+          <div class="donut-center">
+            <div class="pct" id="dc-pct">100%</div>
+            <div class="nm" id="dc-nm">Total Supply</div>
+            <div class="sub" id="dc-sub">92,000,000 EXBT</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" data-d="1">
+        <div class="legend" id="legend"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== UTILITY ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:36px">
+      <span class="eyebrow">Why EXBT has value</span>
+      <h2 class="h-lg" style="margin-top:14px">Three jobs, one token</h2>
+    </div>
+    <div class="grid cols-3">
+      <div class="card util-card reveal" data-d="1"><div class="ic">⛽</div><h3>Gas &amp; settlement</h3><p>Every transaction, contract call and dApp interaction on ExBeast is paid in EXBT — creating organic, usage-driven demand.</p></div>
+      <div class="card util-card reveal" data-d="2"><div class="ic">🔒</div><h3>Staking &amp; security</h3><p>Stake EXBT to help secure the network and earn up to 8% APY. The more that's staked, the stronger the chain.</p></div>
+      <div class="card util-card reveal" data-d="3"><div class="ic">🗳️</div><h3>Governance</h3><p>EXBT holders vote on treasury spend, grants, and protocol upgrades. For the community, by the community.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VESTING ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="grid cols-2" style="gap:48px;align-items:start">
+      <div class="reveal">
+        <span class="eyebrow">Release schedule</span>
+        <h2 class="h-md" style="margin:14px 0 14px">Vesting designed for the long game</h2>
+        <p class="lead" style="font-size:16px">Team and advisory allocations vest over multiple years to keep incentives aligned with the community. Ecosystem and staking rewards unlock gradually as the network grows.</p>
+        <div class="tag-row" style="margin-top:22px"><span class="chip">Cliff + linear vesting</span><span class="chip">On-chain &amp; verifiable</span></div>
+      </div>
+      <div class="reveal" data-d="1">
+        <div class="vest-row"><div class="lab">Public Sale</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">TGE 100%</div></div>
+        <div class="vest-row"><div class="lab">Staking Rewards</div><div class="track"><div class="fill" style="width:30%"></div></div><div class="val">48 mo</div></div>
+        <div class="vest-row"><div class="lab">Team</div><div class="track"><div class="fill" style="width:15%"></div></div><div class="val">12mo cliff · 36mo</div></div>
+        <div class="vest-row"><div class="lab">Exchange Partnership</div><div class="track"><div class="fill" style="width:55%"></div></div><div class="val">18 mo</div></div>
+        <div class="vest-row"><div class="lab">Web3 Games · RWA · SocialFi</div><div class="track"><div class="fill" style="width:25%"></div></div><div class="val">36 mo</div></div>
+        <div class="vest-row"><div class="lab">Advisory</div><div class="track"><div class="fill" style="width:10%"></div></div><div class="val">6mo cliff · 24mo</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2 class="h-md">Put your EXBT to work</h2>
+        <p class="text-dim" style="margin-top:8px">Stake today and earn 8% APY while securing the network.</p>
+      </div>
+      <div class="hero-cta"><a href="staking.html" class="btn btn-primary">Stake EXBT</a><a href="docs.html" class="btn btn-ghost">Token contract</a></div>
+    </div>
+  </div>
+</section>
+
+<div id="chrome-footer"></div>
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+(function () {
+  var DATA = [
+    { nm: "Staking Rewards",      pc: 22, c: "#BFFF00" },
+    { nm: "Public Sale",          pc: 20, c: "#C8F23A" },
+    { nm: "Team",                 pc: 15, c: "#6FA800" },
+    { nm: "Exchange Partnership", pc: 10, c: "#A6E000" },
+    { nm: "Marketing",            pc: 10, c: "#8FCC00" },
+    { nm: "Web3 Games",           pc: 10, c: "#9BE000" },
+    { nm: "RWA",                  pc: 6,  c: "#8FCC00" },
+    { nm: "SocialFi",             pc: 5,  c: "#E3FF8F" },
+    { nm: "Charity",              pc: 1,  c: "#DDF59A" },
+    { nm: "Advisory",             pc: 1,  c: "#748064" },
+  ];
+  var SUPPLY = 92000000;
+  var R = 120, CX = 160, CY = 160, CIRC = 2 * Math.PI * R;
+  var svg = document.getElementById("donut");
+  var legend = document.getElementById("legend");
+  var dcPct = document.getElementById("dc-pct"), dcNm = document.getElementById("dc-nm"), dcSub = document.getElementById("dc-sub");
+  var segs = [], rows = [], offset = 0;
+
+  function fmt(n){ return n.toLocaleString("en-US"); }
+
+  DATA.forEach(function (d, i) {
+    var len = (d.pc / 100) * CIRC;
+    var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute("class", "donut-seg");
+    c.setAttribute("cx", CX); c.setAttribute("cy", CY); c.setAttribute("r", R);
+    c.setAttribute("stroke", d.c);
+    c.setAttribute("stroke-dasharray", len.toFixed(2) + " " + (CIRC - len).toFixed(2));
+    c.setAttribute("stroke-dashoffset", (-offset).toFixed(2));
+    c.style.strokeLinecap = "butt";
+    svg.appendChild(c); segs.push(c);
+    offset += len;
+
+    var row = document.createElement("div");
+    row.className = "legend-row";
+    row.innerHTML = '<span class="sw" style="background:' + d.c + '"></span>' +
+      '<span><span class="nm">' + d.nm + '</span><br><span class="amt">' + fmt(Math.round(SUPPLY * d.pc / 100)) + ' EXBT</span></span>' +
+      '<span class="pc">' + d.pc + '%</span>';
+    legend.appendChild(row); rows.push(row);
+
+    function focus(){ select(i); } function blur(){ reset(); }
+    row.addEventListener("mouseenter", focus); row.addEventListener("mouseleave", blur);
+    c.addEventListener("mouseenter", focus); c.addEventListener("mouseleave", blur);
+  });
+
+  function select(i){
+    var d = DATA[i];
+    segs.forEach(function (s, j){ s.classList.toggle("dim", j !== i); s.classList.toggle("active", j === i); });
+    rows.forEach(function (r, j){ r.classList.toggle("active", j === i); });
+    dcPct.textContent = d.pc + "%"; dcPct.style.color = d.c;
+    dcNm.textContent = d.nm; dcSub.textContent = fmt(Math.round(SUPPLY * d.pc / 100)) + " EXBT";
+  }
+  function reset(){
+    segs.forEach(function (s){ s.classList.remove("dim","active"); });
+    rows.forEach(function (r){ r.classList.remove("active"); });
+    dcPct.textContent = "100%"; dcPct.style.color = ""; dcNm.textContent = "Total Supply"; dcSub.textContent = fmt(SUPPLY) + " EXBT";
+  }
+})();
+</script>
+</body>
+</html>

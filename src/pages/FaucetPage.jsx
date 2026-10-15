@@ -18,7 +18,7 @@ export default function FaucetPage() {
           </Reveal>
           <Reveal delay={3}>
             <p className="lead" style={{ margin: '18px auto 0', maxWidth: '50ch' }}>
-              Request up to 20 testnet EXBT tokens for free. Perfect for developers testing smart contracts, building dApps, or experimenting with Exbotix features on Chain ID 11211.
+              Request up to 20 testnet EXBT tokens for free. Perfect for developers testing smart contracts, building dApps, or experimenting with ExBeast features on Chain ID 11211.
             </p>
           </Reveal>
         </div>

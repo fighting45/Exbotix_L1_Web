@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Reveal from '../components/common/Reveal';
 
 const APPS = [
-  { n: "Exbotix Crypto Exchange", c: "cex", g: "⇄", d: "Full-featured centralized exchange with spot trading, advanced order types, and instant settlement on Exbotix.", s: "Live · Mainnet" },
+  { n: "ExBeast Crypto Exchange", c: "cex", g: "⇄", d: "Full-featured centralized exchange with spot trading, advanced order types, and instant settlement on ExBeast.", s: "Live · Mainnet" },
   { n: "Arbitrage Trading", c: "cex", g: "⟲", d: "Automated arbitrage bot exploiting price differences across exchanges with sub-second execution.", s: "Live · Mainnet" },
   { n: "NeuralSwap", c: "ai", g: "⬡", d: "AI-routed DEX aggregator finding the best execution across pools.", s: "In build" },
   { n: "AgentVault", c: "ai", g: "◉", d: "Autonomous agent wallets with on-chain spending policies.", s: "In build" },
@@ -38,7 +38,7 @@ export default function Ecosystem() {
             <Reveal delay={1}><h1>One chain.<br/>Every category.</h1></Reveal>
             <Reveal delay={2}>
               <p className="lead" style={{ maxWidth: '42ch' }}>
-                Exbotix is built to host the full spectrum of on-chain apps. Here's what's live on testnet, what's in build, and where you can plug in.
+                ExBeast is built to host the full spectrum of on-chain apps. Here's what's live on testnet, what's in build, and where you can plug in.
               </p>
             </Reveal>
           </div>
@@ -121,7 +121,7 @@ export default function Ecosystem() {
           <Reveal>
             <div className="cta-final">
               <span className="eyebrow" style={{ justifyContent: 'center' }}>Builders wanted</span>
-              <h2 className="h-lg" style={{ margin: '16px 0 14px' }}>Bring your dApp to Exbotix</h2>
+              <h2 className="h-lg" style={{ margin: '16px 0 14px' }}>Bring your dApp to ExBeast</h2>
               <p className="lead" style={{ margin: '0 auto 28px' }}>
                 Grants, technical support and a community of early adopters are waiting. If you can build on Ethereum, you can build here.
               </p>
@@ -145,7 +145,7 @@ export default function Ecosystem() {
           color: var(--accent);
         }
         .filter.active {
-          background: rgba(157,92,255,.12);
+          background: rgba(191,255,0,.12);
           border-color: var(--accent);
           color: var(--accent);
         }

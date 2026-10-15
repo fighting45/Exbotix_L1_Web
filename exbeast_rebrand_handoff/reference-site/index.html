@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ExBeast — The Unified Layer 1 for AI, DeFi, SocialFi & Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/theme.css" />
+<link rel="stylesheet" href="assets/css/home.css" />
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<canvas id="net"></canvas>
+
+<!-- ===================== HERO PORTAL ===================== -->
+<header class="hero-portal">
+  <!-- decorative arc crowning above the heading -->
+  <div class="hero-crown" aria-hidden="true"></div>
+  <!-- swirling purple vortex (behind the robot) -->
+  <div class="portal" aria-hidden="true">
+    <div class="swirl a"></div>
+    <div class="swirl b"></div>
+    <div class="swirl c"></div>
+    <div class="core-glow"></div>
+  </div>
+
+  <div class="hero-content wrap">
+    <h1 class="hero-rotate">
+      <span class="fixed-line">One chain for</span>
+      <span class="rotor"><span class="rotor-item gradtext">AI Agents</span></span>
+    </h1>
+    <p class="lead">ExBeast is a modern, efficient Layer 1 that converges AI, exchange infrastructure, decentralized finance and social into one programmable ecosystem. Built for the community, by the community.</p>
+    <div class="hero-cta">
+      <a href="staking.html" class="btn btn-orbit">Launch App <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="docs.html" class="btn btn-primary">Start Building</a>
+    </div>
+  </div>
+
+  <!-- animated robot centerpiece -->
+  <div class="hero-robot">
+    <div class="orbit o1">
+      <div class="coin top"><span>₿</span></div>
+      <div class="coin right"><span>Ξ</span></div>
+      <div class="coin bottom"><span>◎</span></div>
+      <div class="coin left"><span>₮</span></div>
+    </div>
+    <div class="orbit o3">
+      <div class="coin top"><span>E</span></div>
+      <div class="coin bottom"><span>◈</span></div>
+    </div>
+    <svg viewBox="0 0 320 360" aria-label="ExBeast robot">
+      <defs>
+        <linearGradient id="hmetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222A1A"/><stop offset="1" stop-color="#10140C"/></linearGradient>
+        <linearGradient id="hedge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D6FF66"/><stop offset="1" stop-color="#8FCC00"/></linearGradient>
+        <radialGradient id="hcore" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F4FAE6"/><stop offset="35%" stop-color="#C8F23A"/><stop offset="100%" stop-color="#557F00"/></radialGradient>
+        <filter id="hglow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- shoulders / arms -->
+      <path d="M44 196 L96 184 L92 250 L52 262 Z" fill="url(#hmetal)" stroke="url(#hedge)" stroke-width="2"/>
+      <path d="M276 196 L224 184 L228 250 L268 262 Z" fill="url(#hmetal)" stroke="url(#hedge)" stroke-width="2"/>
+      <circle cx="58" cy="258" r="13" fill="#10140C" stroke="url(#hedge)" stroke-width="2"/>
+      <circle cx="262" cy="258" r="13" fill="#10140C" stroke="url(#hedge)" stroke-width="2"/>
+      <!-- torso -->
+      <path d="M96 188 L224 188 L208 320 L112 320 Z" fill="url(#hmetal)" stroke="url(#hedge)" stroke-width="2.5"/>
+      <path d="M120 214 H200 M116 246 H204" stroke="rgba(200,242,58,.3)" stroke-width="1.5"/>
+      <!-- core -->
+      <g filter="url(#hglow)">
+        <circle cx="160" cy="244" r="26" fill="url(#hcore)"/>
+        <circle cx="160" cy="244" r="34" fill="none" stroke="url(#hedge)" stroke-width="2.5"/>
+        <circle cx="160" cy="244" r="34" fill="none" stroke="#D6FF66" stroke-width="1" stroke-dasharray="5 9"><animateTransform attributeName="transform" type="rotate" from="0 160 244" to="360 160 244" dur="8s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- neck -->
+      <path d="M142 170 H178 L172 190 H148 Z" fill="url(#hmetal)" stroke="url(#hedge)" stroke-width="1.5"/>
+      <!-- head -->
+      <path d="M118 78 L202 78 L216 124 L194 170 L126 170 L104 124 Z" fill="url(#hmetal)" stroke="url(#hedge)" stroke-width="2.5"/>
+      <rect x="128" y="106" width="64" height="28" rx="7" fill="#080A06" stroke="rgba(200,242,58,.5)" stroke-width="1.5"/>
+      <circle class="hr-eye" cx="146" cy="120" r="6.5" fill="#D6FF66" filter="url(#hglow)"/>
+      <circle class="hr-eye" cx="174" cy="120" r="6.5" fill="#D6FF66" filter="url(#hglow)"/>
+      <path d="M124 150 H196" stroke="rgba(200,242,58,.4)" stroke-width="1.5"/>
+      <!-- antenna -->
+      <path d="M160 78 V48" stroke="url(#hedge)" stroke-width="2.5"/>
+      <circle cx="160" cy="42" r="5.5" fill="#D6FF66" filter="url(#hglow)"/>
+    </svg>
+  </div>
+
+  <div class="hero-stats">
+    <div><div class="s-val" style="color:var(--accent-3)">100</div><div class="s-lab">TPS Throughput</div></div>
+    <div><div class="s-val">12.8s</div><div class="s-lab">Block Time</div></div>
+    <div><div class="s-val">92M</div><div class="s-lab">EXBT Supply</div></div>
+    <div><div class="s-val">8%</div><div class="s-lab">Staking APY</div></div>
+  </div>
+</header>
+
+<div class="wrap" style="margin-top:48px">
+  <div class="trust-bar">
+    <span class="chip net-test"><span class="dot test live"></span>Testnet Live · 11211</span>
+    <span class="chip net-main"><span class="dot"></span>Mainnet · 11311</span>
+    <span class="chip">EVM Equivalent</span>
+    <span class="chip">EXBT Gas Token</span>
+    <span class="chip">Proof of Work</span>
+    <span class="chip">Solidity Ready</span>
+  </div>
+</div>
+
+<!-- ===================== ROBOTIC ASSEMBLY ===================== -->
+<section class="assembly">
+  <div class="assembly-sticky">
+    <div class="assembly-head">
+      <span class="eyebrow">Engineered to assemble</span>
+      <h2 class="h-lg" style="margin-top:14px">Scroll to build the machine</h2>
+    </div>
+    <div class="assembly-stage">
+
+      <!-- LEFT callouts -->
+      <div class="callout left" style="top:34%">
+        <div class="c-num">01 / CORE</div>
+        <div class="c-title">EVM Equivalence <span class="dot"></span></div>
+        <div class="c-desc">Deploy any Solidity contract unchanged. Your existing tooling, wallets and audits just work.</div>
+      </div>
+      <div class="callout left" style="top:60%">
+        <div class="c-num">03 / SECURITY</div>
+        <div class="c-title">Proof-of-Work secured</div>
+        <div class="c-desc">Battle-tested consensus anchoring every block on a transparent, permissionless network.</div>
+      </div>
+
+      <!-- RIGHT callouts -->
+      <div class="callout right" style="top:30%">
+        <div class="c-num">02 / FABRIC</div>
+        <div class="c-title">Unified ecosystem</div>
+        <div class="c-desc">AI agents, CEX rails, DeFi and SocialFi share one settlement layer and one gas token — EXBT.</div>
+      </div>
+      <div class="callout right" style="top:62%">
+        <div class="c-num">04 / PEOPLE</div>
+        <div class="c-title">Community governed</div>
+        <div class="c-desc">For the community, by the community. Holders steer the treasury, grants and roadmap.</div>
+      </div>
+
+      <!-- ROBOT -->
+      <div class="robot-wrap">
+        <svg viewBox="0 0 520 560" aria-label="ExBeast mech assembling">
+          <defs>
+            <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#222A1A"/><stop offset="1" stop-color="#10140C"/>
+            </linearGradient>
+            <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#C8F23A"/><stop offset="1" stop-color="#8FCC00"/>
+            </linearGradient>
+            <radialGradient id="reactor" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#F4FAE6"/><stop offset="35%" stop-color="#C8F23A"/><stop offset="100%" stop-color="#557F00"/>
+            </radialGradient>
+            <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+
+          <!-- BASE -->
+          <g id="r-base">
+            <ellipse cx="260" cy="510" rx="150" ry="26" fill="#10140C" stroke="var(--line-2)" stroke-width="1"/>
+            <path d="M150 505 L260 480 L370 505 L260 528 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="1.5"/>
+          </g>
+
+          <!-- TORSO -->
+          <g id="r-torso">
+            <path d="M180 300 L340 300 L320 470 L200 470 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2"/>
+            <path d="M210 330 H310 M205 370 H315 M212 410 H308" stroke="rgba(200,242,58,.35)" stroke-width="1.5"/>
+            <path d="M232 440 L288 440 L280 462 L240 462 Z" fill="#10140C" stroke="rgba(200,242,58,.4)" stroke-width="1.5"/>
+          </g>
+
+          <!-- CORE / REACTOR -->
+          <g id="r-core" filter="url(#glow)">
+            <circle cx="260" cy="360" r="34" fill="url(#reactor)"/>
+            <circle cx="260" cy="360" r="44" fill="none" stroke="url(#edge)" stroke-width="2.5"/>
+            <circle cx="260" cy="360" r="44" fill="none" stroke="#C8F23A" stroke-width="1" stroke-dasharray="6 10">
+              <animateTransform attributeName="transform" type="rotate" from="0 260 360" to="360 260 360" dur="9s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <!-- SHOULDERS -->
+          <g id="r-shoulderL"><path d="M120 305 L195 295 L188 350 L130 358 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2"/></g>
+          <g id="r-shoulderR"><path d="M400 305 L325 295 L332 350 L390 358 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2"/></g>
+
+          <!-- ARMS -->
+          <g id="r-armL"><path d="M118 320 L160 330 L150 455 L108 445 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2"/><circle cx="129" cy="450" r="14" fill="#10140C" stroke="url(#edge)" stroke-width="2"/></g>
+          <g id="r-armR"><path d="M402 320 L360 330 L370 455 L412 445 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2"/><circle cx="391" cy="450" r="14" fill="#10140C" stroke="url(#edge)" stroke-width="2"/></g>
+
+          <!-- NECK -->
+          <g id="r-neck"><path d="M235 280 H285 L278 305 H242 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="1.5"/></g>
+
+          <!-- HEAD -->
+          <g id="r-head">
+            <path d="M205 165 L315 165 L330 225 L300 280 L220 280 L190 225 Z" fill="url(#metal)" stroke="url(#edge)" stroke-width="2.5"/>
+            <rect x="218" y="200" width="84" height="34" rx="8" fill="#080A06" stroke="rgba(200,242,58,.5)" stroke-width="1.5"/>
+            <circle class="r-eye" cx="240" cy="217" r="7" fill="#C8F23A" style="opacity:.12;transition:opacity .4s"/>
+            <circle class="r-eye" cx="280" cy="217" r="7" fill="#C8F23A" style="opacity:.12;transition:opacity .4s"/>
+            <path d="M212 250 H308" stroke="rgba(200,242,58,.4)" stroke-width="1.5"/>
+          </g>
+
+          <!-- ANTENNA -->
+          <g id="r-antenna"><path d="M260 165 V120" stroke="url(#edge)" stroke-width="2.5"/><circle cx="260" cy="114" r="6" fill="#C8F23A" filter="url(#glow)"/></g>
+        </svg>
+      </div>
+    </div>
+    <div class="assembly-progress-line"><i></i></div>
+  </div>
+</section>
+
+<!-- ===================== LIVE STATS ===================== -->
+<section class="section-pad">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;margin-bottom:40px">
+      <span class="eyebrow" style="justify-content:center">Network at a glance</span>
+      <h2 class="h-lg" style="margin-top:14px">Numbers that compound</h2>
+    </div>
+    <div class="stat-strip reveal" data-stats>
+      <div class="statbox"><div class="big" data-count="100" data-suf="">0</div><div class="lab">Transactions / sec</div></div>
+      <div class="statbox"><div class="big" data-count="12.8" data-dec="1" data-suf="s">0</div><div class="lab">Avg block time</div></div>
+      <div class="statbox"><div class="big" data-count="92" data-suf="M">0</div><div class="lab">Max EXBT supply</div></div>
+      <div class="statbox"><div class="big" data-count="8" data-suf="%">0</div><div class="lab">Staking APY</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ECOSYSTEM ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:42px">
+      <div>
+        <span class="eyebrow">One settlement layer</span>
+        <h2 class="h-lg" style="margin-top:14px;max-width:16ch">Every frontier, converged</h2>
+      </div>
+      <a href="ecosystem.html" class="btn btn-ghost">Explore ecosystem</a>
+    </div>
+    <div class="grid cols-3">
+      <div class="card eco-card reveal" data-d="1"><div class="eco-icon">⬡</div><div><h3>AI Agents</h3><p>On-chain inference markets, agent wallets and autonomous compute settling natively in EXBT.</p></div><div class="stat">// intelligence layer</div></div>
+      <div class="card eco-card reveal" data-d="2"><div class="eco-icon">⇄</div><div><h3>CEX Rails</h3><p>Exchange-grade liquidity and order infrastructure bridged directly into the chain.</p></div><div class="stat">// liquidity layer</div></div>
+      <div class="card eco-card reveal" data-d="3"><div class="eco-icon">◈</div><div><h3>DeFi</h3><p>AMMs, lending and perps with EVM equivalence — fork your favorite protocol day one.</p></div><div class="stat">// finance layer</div></div>
+      <div class="card eco-card reveal" data-d="4"><div class="eco-icon">◎</div><div><h3>SocialFi</h3><p>Creator economies, social graphs and reputation owned by users, not platforms.</p></div><div class="stat">// social layer</div></div>
+      <div class="card eco-card reveal" data-d="5"><div class="eco-icon">▲</div><div><h3>Web3 Games</h3><p>Low-friction in-game economies and true asset ownership for studios of any size.</p></div><div class="stat">// play layer</div></div>
+      <div class="card eco-card reveal" data-d="6"><div class="eco-icon">◧</div><div><h3>RWA</h3><p>Tokenize and settle real-world assets with transparent, auditable provenance.</p></div><div class="stat">// asset layer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TOKEN PREVIEW ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="token-panel reveal">
+      <div class="left">
+        <img src="assets/img/exbt-coin.png" alt="EXBT coin" style="width:96px;height:96px;display:block;margin:0 0 18px;filter:drop-shadow(0 10px 30px rgba(191,255,0,.35))">
+        <span class="eyebrow">The EXBT token</span>
+        <h2 class="h-md" style="margin:16px 0 12px">Gas, staking &amp; governance in one asset</h2>
+        <p class="lead" style="font-size:16px">EXBT powers every transaction, secures the network through staking, and gives the community a direct say in where ExBeast goes next.</p>
+        <div class="hero-cta" style="margin-top:26px">
+          <a href="tokenomics.html" class="btn btn-primary">View tokenomics</a>
+          <a href="staking.html" class="btn btn-ghost">Stake EXBT</a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="token-line"><span class="k">Token</span><span class="v">ExBeast · EXBT</span></div>
+        <div class="token-line"><span class="k">Max supply</span><span class="v">92,000,000</span></div>
+        <div class="token-line"><span class="k">Utility</span><span class="v">Gas · Staking · Governance</span></div>
+        <div class="token-line"><span class="k">Staking reward</span><span class="v accent">8% APY</span></div>
+        <div class="token-line"><span class="k">Consensus</span><span class="v">Proof of Work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUILD ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap grid cols-2" style="align-items:center;gap:48px">
+    <div class="reveal">
+      <span class="eyebrow">Built for builders</span>
+      <h2 class="h-lg" style="margin:14px 0 16px">Ship in minutes,<br/>not migrations</h2>
+      <p class="lead">If you can build on Ethereum, you can build on ExBeast. Point your tooling at our RPC, keep your Solidity, and deploy to a chain designed for the next wave of apps.</p>
+      <div class="tag-row" style="margin-top:24px">
+        <span class="chip">Hardhat</span><span class="chip">Foundry</span><span class="chip">ethers.js</span><span class="chip">MetaMask</span><span class="chip">Remix</span>
+      </div>
+      <a href="docs.html" class="btn btn-primary" style="margin-top:28px">Read the docs <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="code-card reveal" data-d="1">
+      <div class="code-head"><span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span><span class="d" style="background:#28C840"></span><span class="mono" style="margin-left:8px;font-size:12px;color:var(--text-mute)">hardhat.config.js</span></div>
+      <pre class="code-body"><span class="cm">// ExBeast Mainnet · 11311  —  Testnet · 11211</span>
+<span class="kw">module</span>.exports = {
+  networks: {
+    <span class="fn">exbotix</span>: {           <span class="cm">// Mainnet</span>
+      url: <span class="st">"https://rpc.exbotix.net/"</span>,
+      chainId: <span class="st">11311</span>,
+      accounts: [process.env.<span class="fn">PRIVATE_KEY</span>],
+    },
+    <span class="fn">exbotixTestnet</span>: {    <span class="cm">// Testnet</span>
+      url: <span class="st">"http://testnet.rpc.exbotix.net"</span>,
+      chainId: <span class="st">11211</span>,
+      accounts: [process.env.<span class="fn">PRIVATE_KEY</span>],
+    },
+  },
+};
+
+<span class="cm">// Deploy as usual</span>
+<span class="st">$</span> npx hardhat run deploy.js <span class="kw">--network</span> exbotix</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ROADMAP TEASER ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:20px">
+      <div><span class="eyebrow">Where we're headed</span><h2 class="h-lg" style="margin-top:14px">The road ahead</h2></div>
+      <a href="mission.html" class="btn btn-ghost">Full roadmap &amp; mission</a>
+    </div>
+    <div class="reveal">
+      <div class="rm-row"><div class="q">Now<small>Q2 2026</small></div><div><h4>Testnet &amp; core infrastructure</h4><p>Public testnet live on Chain ID 11211, block explorer, faucet and the first developer toolkit.</p></div></div>
+      <div class="rm-row"><div class="q">Next<small>Q3 2026</small></div><div><h4>Bridge &amp; staking go live</h4><p>Cross-chain bridge for EXBT and assets, plus native staking at 8% APY with non-custodial rewards.</p></div></div>
+      <div class="rm-row"><div class="q">Soon<small>Q4 2026</small></div><div><h4>Ecosystem ignition</h4><p>Grants program, first wave of AI, DeFi and SocialFi dApps, and mainnet candidate.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="section-pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-final reveal">
+      <span class="eyebrow" style="justify-content:center">For the community, by the community</span>
+      <h2 class="h-xl" style="margin:18px 0 16px">Build the future on ExBeast</h2>
+      <p class="lead" style="margin:0 auto 30px">Join the builders, stakers and dreamers shaping a chain where AI, finance and social finally live in one place.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a href="staking.html" class="btn btn-primary">Launch App</a>
+        <a href="community.html" class="btn btn-ghost">Join the community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<div id="chrome-footer"></div>
+
+<script src="assets/js/chrome.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>

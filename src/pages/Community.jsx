@@ -9,7 +9,7 @@ export default function Community() {
     if (email && email.indexOf('@') > 0) {
       // Show toast (would use toast system)
       setEmail('');
-      alert('Subscribed! Welcome to the Exbotix community');
+      alert('Subscribed! Welcome to the ExBeast community');
     } else {
       alert('Enter a valid email');
     }
@@ -25,7 +25,7 @@ export default function Community() {
           </Reveal>
           <Reveal delay={2}>
             <p className="lead" style={{ margin: '18px auto 0' }}>
-              Join thousands of builders, stakers and believers shaping Exbotix. Jump into the conversation, follow the latest, and help govern the chain.
+              Join thousands of builders, stakers and believers shaping ExBeast. Jump into the conversation, follow the latest, and help govern the chain.
             </p>
           </Reveal>
           <Reveal delay={3}>
@@ -117,7 +117,7 @@ export default function Community() {
                 <div className="thumb"><span className="glyph">⬡</span></div>
                 <div className="body">
                   <div className="meta">Announcement · May 2026</div>
-                  <h3>Exbotix Testnet is live on Chain ID 11211</h3>
+                  <h3>ExBeast Testnet is live on Chain ID 11211</h3>
                   <p>Our public testnet is open. Add the network, grab faucet EXBT, and deploy your first contract today.</p>
                 </div>
               </a>
@@ -138,7 +138,7 @@ export default function Community() {
                 <div className="body">
                   <div className="meta">Product · Apr 2026</div>
                   <h3>Staking design: earning 8% APY safely</h3>
-                  <p>How non-custodial staking secures Exbotix and rewards long-term holders.</p>
+                  <p>How non-custodial staking secures ExBeast and rewards long-term holders.</p>
                 </div>
               </a>
             </Reveal>
