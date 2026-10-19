@@ -49,7 +49,6 @@ export const NAV_GROUPS = [
     items: [
       { href: "/mission", label: "Mission & Vision" },
       { href: "/mission", label: "Roadmap" },
-      { href: "/team", label: "Team" },
       { href: "/community", label: "Blog" }
     ]
   }

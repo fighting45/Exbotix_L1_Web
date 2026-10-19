@@ -33,17 +33,23 @@ export async function sendTestnetTokens(recipientAddress, amount, onStatusChange
     // Convert amount to wei (18 decimals)
     const amountWei = ethers.parseEther(amount.toString());
 
-    // Get current gas price
+    // Get current gas price — fall back to legacy if chain doesn't support EIP-1559
     const feeData = await provider.getFeeData();
 
-    // Create transaction
-    const tx = {
-      to: recipientAddress,
-      value: amountWei,
-      gasLimit: 21000,
-      maxFeePerGas: feeData.maxFeePerGas,
-      maxPriorityFeePerGas: feeData.maxPriorityFeePerGas,
-    };
+    const tx = feeData.maxFeePerGas
+      ? {
+          to: recipientAddress,
+          value: amountWei,
+          gasLimit: 21000,
+          maxFeePerGas: feeData.maxFeePerGas,
+          maxPriorityFeePerGas: feeData.maxPriorityFeePerGas,
+        }
+      : {
+          to: recipientAddress,
+          value: amountWei,
+          gasLimit: 21000,
+          gasPrice: feeData.gasPrice,
+        };
 
     onStatusChange('pending', 'Sending transaction...');
 

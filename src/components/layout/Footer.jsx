@@ -65,7 +65,6 @@ export default function Footer() {
             <div className="footer-links">
               <Link to="/mission">Mission &amp; Vision</Link>
               <Link to="/mission">Roadmap</Link>
-              <Link to="/team">Team</Link>
               <Link to="/community">Blog</Link>
               <Link to="/community">Governance</Link>
             </div>
