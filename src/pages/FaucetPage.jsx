@@ -76,7 +76,7 @@ export default function FaucetPage() {
                   Developer Docs
                 </Link>
                 <a
-                  href="https://testnet_explorer.exbotix.net"
+                  href="https://testnet_explorer.exbtnetwork.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-ghost"

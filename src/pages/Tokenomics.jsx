@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/common/Reveal';
 import LBankBuyBand from '../components/tokenomics/LBankBuyBand';
+import ExBeastBuyBand from '../components/tokenomics/ExBeastBuyBand';
 
 const DATA = [
   { nm: "Staking Rewards", pc: 22, c: "#BFFF00" },
@@ -80,6 +81,7 @@ export default function Tokenomics() {
 
       {/* Where to buy EXBT */}
       <LBankBuyBand />
+      <ExBeastBuyBand />
 
       {/* Donut */}
       <section className="section-pad">

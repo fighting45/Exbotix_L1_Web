@@ -213,7 +213,7 @@ export default function Faucet() {
               <div className="status-message">{message}</div>
               {txHash && (
                 <a
-                  href={`https://testnet_explorer.exbotix.net/tx/${txHash}`}
+                  href={`https://testnet_explorer.exbtnetwork.com/tx/${txHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="status-link"

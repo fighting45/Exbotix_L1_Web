@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 
-const TESTNET_RPC = 'https://testnet_rpc.exbotix.net';
+const TESTNET_RPC = 'https://testnet_rpc.exbtnetwork.com';
 const FAUCET_PRIVATE_KEY = import.meta.env.VITE_FAUCET_PRIVATE_KEY;
 
 /**
