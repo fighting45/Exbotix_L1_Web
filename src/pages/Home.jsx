@@ -25,7 +25,7 @@ export default function Home() {
             community, by the community.
           </p>
           <div className="hero-cta">
-            <a href="https://exbotix.com" className="btn btn-orbit">
+            <a href="https://exbeast.com" className="btn btn-orbit">
               Launch App{' '}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 6l6 6-6 6" />
@@ -224,12 +224,12 @@ export default function Home() {
 {'\n'}<span className="kw">module</span>.exports = {'{'}
 {'\n'}  networks: {'{'}
 {'\n'}    <span className="fn">exbotix</span>: {'{'}           <span className="cm">// Mainnet</span>
-{'\n'}      url: <span className="st">"https://rpc.exbotix.net/"</span>,
+{'\n'}      url: <span className="st">"https://rpc.exbtnetwork.com/"</span>,
 {'\n'}      chainId: <span className="st">11311</span>,
 {'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],
 {'\n'}    {'},'}
 {'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}    <span className="cm">// Testnet</span>
-{'\n'}      url: <span className="st">"https://testnet_rpc.exbotix.net"</span>,
+{'\n'}      url: <span className="st">"https://testnet_rpc.exbtnetwork.com"</span>,
 {'\n'}      chainId: <span className="st">11211</span>,
 {'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],
 {'\n'}    {'},'}
@@ -294,7 +294,7 @@ export default function Home() {
                 Join the builders, stakers and dreamers shaping a chain where AI, finance and social finally live in one place on ExBeast.
               </p>
               <div className="hero-cta" style={{ justifyContent: 'center' }}>
-                <a href="https://exbotix.com" className="btn btn-primary">Launch App</a>
+                <a href="https://exbeast.com" className="btn btn-primary">Launch App</a>
                 <Link to="/community" className="btn btn-ghost">Join the community</Link>
               </div>
             </div>

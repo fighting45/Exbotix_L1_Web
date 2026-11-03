@@ -47,6 +47,7 @@ export default function Footer() {
               <Link to="/bridge">Bridge</Link>
               <a href={EXPLORER_MAIN} target="_blank" rel="noopener">Block Explorer</a>
               <a href={EXCHANGE_URLS.lbank} target="_blank" rel="noopener">Buy EXBT · LBank</a>
+              <a href={EXCHANGE_URLS.exbeast} target="_blank" rel="noopener">Buy EXBT · ExBeast</a>
             </div>
           </div>
 

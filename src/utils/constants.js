@@ -1,5 +1,6 @@
 export const EXCHANGE_URLS = {
   lbank: 'https://www.lbank.com/trade/exbt_usdt',
+  exbeast: 'https://exbeast.com/spot-platform/EXBT-USDT/spot',
 };
 
 export const NETWORKS = {
@@ -7,21 +8,21 @@ export const NETWORKS = {
     chainId: "0x2c2f",
     chainIdDecimal: 11311,
     chainName: "Exbotix Mainnet",
-    rpcUrls: ["https://rpc.exbotix.net/"],
-    blockExplorerUrls: ["https://scan.exbotix.net/"],
+    rpcUrls: ["https://rpc.exbtnetwork.com/"],
+    blockExplorerUrls: ["https://scan.exbtnetwork.com/"],
     nativeCurrency: { name: "Exbotix", symbol: "EXBT", decimals: 18 }
   },
   testnet: {
     chainId: "0x2bcb",
     chainIdDecimal: 11211,
     chainName: "Exbotix Testnet",
-    rpcUrls: ["https://testnet_rpc.exbotix.net"],
-    blockExplorerUrls: ["https://testnet_explorer.exbotix.net"],
+    rpcUrls: ["https://testnet_rpc.exbtnetwork.com"],
+    blockExplorerUrls: ["https://testnet_explorer.exbtnetwork.com"],
     nativeCurrency: { name: "Exbotix", symbol: "EXBT", decimals: 18 }
   }
 };
 
-export const EXPLORER_MAIN = "https://scan.exbotix.net/";
+export const EXPLORER_MAIN = "https://scan.exbtnetwork.com/";
 
 export const NAV_GROUPS = [
   {
@@ -32,7 +33,8 @@ export const NAV_GROUPS = [
       { href: "/vesting", label: "Vesting" },
       { href: "/bridge", label: "Bridge" },
       { href: EXPLORER_MAIN, label: "Block Explorer", external: true },
-      { href: EXCHANGE_URLS.lbank, label: "Buy EXBT · LBank", external: true }
+      { href: EXCHANGE_URLS.lbank, label: "Buy EXBT · LBank", external: true },
+      { href: EXCHANGE_URLS.exbeast, label: "Buy EXBT · ExBeast", external: true }
     ]
   },
   {

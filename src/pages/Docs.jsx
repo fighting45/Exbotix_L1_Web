@@ -69,8 +69,8 @@ export default function Docs() {
                 </div>
                 <div className="net-row"><span className="k">Chain ID</span><span className="v">11311</span></div>
                 <div className="net-row"><span className="k">Currency</span><span className="v">EXBT</span></div>
-                <div className="net-row"><span className="k">RPC URL</span><span className="v">https://rpc.exbotix.net/</span></div>
-                <div className="net-row"><span className="k">Explorer</span><span className="v"><a href="https://scan.exbotix.net/" target="_blank" rel="noopener">scan.exbotix.net</a></span></div>
+                <div className="net-row"><span className="k">RPC URL</span><span className="v">https://rpc.exbtnetwork.com/</span></div>
+                <div className="net-row"><span className="k">Explorer</span><span className="v"><a href="https://scan.exbtnetwork.com/" target="_blank" rel="noopener">scan.exbtnetwork.com</a></span></div>
                 <button className="btn btn-primary btn-sm" onClick={() => handleAddNetwork('mainnet')}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 5v14M5 12h14"/>
@@ -84,8 +84,8 @@ export default function Docs() {
                 </div>
                 <div className="net-row"><span className="k">Chain ID</span><span className="v">11211</span></div>
                 <div className="net-row"><span className="k">Currency</span><span className="v">EXBT (test)</span></div>
-                <div className="net-row"><span className="k">RPC URL</span><span className="v">https://testnet_rpc.exbotix.net</span></div>
-                <div className="net-row"><span className="k">Explorer</span><span className="v"><a href="https://testnet_explorer.exbotix.net" target="_blank" rel="noopener">testnet_explorer.exbotix.net</a></span></div>
+                <div className="net-row"><span className="k">RPC URL</span><span className="v">https://testnet_rpc.exbtnetwork.com</span></div>
+                <div className="net-row"><span className="k">Explorer</span><span className="v"><a href="https://testnet_explorer.exbtnetwork.com" target="_blank" rel="noopener">testnet_explorer.exbtnetwork.com</a></span></div>
                 <button className="btn btn-ghost btn-sm" onClick={() => handleAddNetwork('testnet')}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 5v14M5 12h14"/>
@@ -130,7 +130,7 @@ export default function Docs() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>hardhat.config.js</span>
               </div>
-              <pre className="code-body"><span className="kw">module</span>.exports = {'{'}{'\n'}  solidity: <span className="st">"0.8.24"</span>,{'\n'}  networks: {'{'}{'\n'}    <span className="cm">// Mainnet — Chain ID 11311</span>{'\n'}    <span className="fn">exbotix</span>: {'{'}{'\n'}      url: <span className="st">"https://rpc.exbotix.net/"</span>,{'\n'}      chainId: <span className="st">11311</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}    <span className="cm">// Testnet — Chain ID 11211</span>{'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}{'\n'}      url: <span className="st">"https://testnet_rpc.exbotix.net"</span>,{'\n'}      chainId: <span className="st">11211</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}  {'},'}{'\n'}{'};'}</pre>
+              <pre className="code-body"><span className="kw">module</span>.exports = {'{'}{'\n'}  solidity: <span className="st">"0.8.24"</span>,{'\n'}  networks: {'{'}{'\n'}    <span className="cm">// Mainnet — Chain ID 11311</span>{'\n'}    <span className="fn">exbotix</span>: {'{'}{'\n'}      url: <span className="st">"https://rpc.exbtnetwork.com/"</span>,{'\n'}      chainId: <span className="st">11311</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}    <span className="cm">// Testnet — Chain ID 11211</span>{'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}{'\n'}      url: <span className="st">"https://testnet_rpc.exbtnetwork.com"</span>,{'\n'}      chainId: <span className="st">11211</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}  {'},'}{'\n'}{'};'}</pre>
             </div>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
@@ -143,7 +143,7 @@ export default function Docs() {
             </div>
 
             <h2 id="rpc">RPC methods</h2>
-            <p>ExBeast supports the standard Ethereum JSON-RPC API on both networks — point at <span className="mono">rpc.exbotix.net</span> for Mainnet or <span className="mono">testnet_rpc.exbotix.net</span> for Testnet. A few common calls:</p>
+            <p>ExBeast supports the standard Ethereum JSON-RPC API on both networks — point at <span className="mono">rpc.exbtnetwork.com</span> for Mainnet or <span className="mono">testnet_rpc.exbtnetwork.com</span> for Testnet. A few common calls:</p>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
                 <span className="d" style={{ background: '#FF5F57' }}></span>
@@ -151,7 +151,7 @@ export default function Docs() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>curl</span>
               </div>
-              <pre className="code-body"><span className="cm"># Mainnet</span>{'\n'}<span className="st">$</span> curl https://rpc.exbotix.net/ \{'\n'}  -X POST -H <span className="st">"Content-Type: application/json"</span> \{'\n'}  -d <span className="st">'{`{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}`}'</span>{'\n'}<span className="cm">{'// → { "result": "0x2c2f" }  (11311)'}</span>{'\n\n'}<span className="cm"># Testnet → https://testnet_rpc.exbotix.net</span>{'\n'}<span className="cm">{'// → { "result": "0x2bcb" }  (11211)'}</span></pre>
+              <pre className="code-body"><span className="cm"># Mainnet</span>{'\n'}<span className="st">$</span> curl https://rpc.exbtnetwork.com/ \{'\n'}  -X POST -H <span className="st">"Content-Type: application/json"</span> \{'\n'}  -d <span className="st">'{`{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}`}'</span>{'\n'}<span className="cm">{'// → { "result": "0x2c2f" }  (11311)'}</span>{'\n\n'}<span className="cm"># Testnet → https://testnet_rpc.exbtnetwork.com</span>{'\n'}<span className="cm">{'// → { "result": "0x2bcb" }  (11211)'}</span></pre>
             </div>
             <ul>
               <li><span className="mono">eth_blockNumber</span> — latest block height</li>
@@ -182,11 +182,11 @@ export default function Docs() {
                   Search blocks, transactions and contracts.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <a className="btn btn-primary btn-sm mono" href="https://scan.exbotix.net/" target="_blank" rel="noopener">
-                    Mainnet · scan.exbotix.net
+                  <a className="btn btn-primary btn-sm mono" href="https://scan.exbtnetwork.com/" target="_blank" rel="noopener">
+                    Mainnet · scan.exbtnetwork.com
                   </a>
-                  <a className="btn btn-ghost btn-sm mono" href="https://testnet_explorer.exbotix.net" target="_blank" rel="noopener">
-                    Testnet · testnet_explorer.exbotix.net
+                  <a className="btn btn-ghost btn-sm mono" href="https://testnet_explorer.exbtnetwork.com" target="_blank" rel="noopener">
+                    Testnet · testnet_explorer.exbtnetwork.com
                   </a>
                 </div>
               </div>
