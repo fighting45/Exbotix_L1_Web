@@ -9,7 +9,7 @@ export default function Bridge() {
           <Reveal delay={1}><h1 style={{ marginTop: '14px' }}>Cross-Chain Bridge</h1></Reveal>
           <Reveal delay={2}>
             <p className="lead" style={{ margin: '18px auto 0', maxWidth: '50ch' }}>
-              Move assets seamlessly between Exbotix and other major blockchain networks.
+              Move assets seamlessly between ExBeast and other major blockchain networks.
             </p>
           </Reveal>
         </div>
@@ -25,7 +25,7 @@ export default function Bridge() {
                   Coming Soon
                 </h2>
                 <p style={{ fontSize: '18px', color: 'var(--text-mute)', lineHeight: '1.6', marginBottom: '32px' }}>
-                  You will be able to cross bridge tokens on Exbotix network soon!
+                  You will be able to cross bridge tokens on ExBeast network soon!
                 </p>
                 <div style={{ display: 'inline-block', padding: '12px 24px', background: 'rgba(157, 92, 255, 0.1)', border: '1px solid rgba(157, 92, 255, 0.3)', borderRadius: 'var(--r-md)' }}>
                   <span style={{ color: 'var(--accent)', fontSize: '14px', fontWeight: '500' }}>

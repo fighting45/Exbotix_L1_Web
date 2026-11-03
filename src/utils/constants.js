@@ -7,18 +7,18 @@ export const NETWORKS = {
   mainnet: {
     chainId: "0x2c2f",
     chainIdDecimal: 11311,
-    chainName: "Exbotix Mainnet",
+    chainName: "ExBeast Mainnet",
     rpcUrls: ["https://rpc.exbtnetwork.com/"],
     blockExplorerUrls: ["https://scan.exbtnetwork.com/"],
-    nativeCurrency: { name: "Exbotix", symbol: "EXBT", decimals: 18 }
+    nativeCurrency: { name: "ExBeast", symbol: "EXBT", decimals: 18 }
   },
   testnet: {
     chainId: "0x2bcb",
     chainIdDecimal: 11211,
-    chainName: "Exbotix Testnet",
+    chainName: "ExBeast Testnet",
     rpcUrls: ["https://testnet_rpc.exbtnetwork.com"],
     blockExplorerUrls: ["https://testnet_explorer.exbtnetwork.com"],
-    nativeCurrency: { name: "Exbotix", symbol: "EXBT", decimals: 18 }
+    nativeCurrency: { name: "ExBeast", symbol: "EXBT", decimals: 18 }
   }
 };
 

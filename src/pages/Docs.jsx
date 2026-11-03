@@ -64,7 +64,7 @@ export default function Docs() {
             <div className="net-grid">
               <div className="net-card">
                 <div className="net-head">
-                  <span className="net-name"><span className="dot"></span>Exbotix Mainnet</span>
+                  <span className="net-name"><span className="dot"></span>ExBeast Mainnet</span>
                   <span className="net-badge main">Mainnet</span>
                 </div>
                 <div className="net-row"><span className="k">Chain ID</span><span className="v">11311</span></div>
@@ -79,7 +79,7 @@ export default function Docs() {
               </div>
               <div className="net-card is-test">
                 <div className="net-head">
-                  <span className="net-name"><span className="dot test live"></span>Exbotix Testnet</span>
+                  <span className="net-name"><span className="dot test live"></span>ExBeast Testnet</span>
                   <span className="net-badge test">Testnet</span>
                 </div>
                 <div className="net-row"><span className="k">Chain ID</span><span className="v">11211</span></div>
@@ -130,7 +130,7 @@ export default function Docs() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>hardhat.config.js</span>
               </div>
-              <pre className="code-body"><span className="kw">module</span>.exports = {'{'}{'\n'}  solidity: <span className="st">"0.8.24"</span>,{'\n'}  networks: {'{'}{'\n'}    <span className="cm">// Mainnet — Chain ID 11311</span>{'\n'}    <span className="fn">exbotix</span>: {'{'}{'\n'}      url: <span className="st">"https://rpc.exbtnetwork.com/"</span>,{'\n'}      chainId: <span className="st">11311</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}    <span className="cm">// Testnet — Chain ID 11211</span>{'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}{'\n'}      url: <span className="st">"https://testnet_rpc.exbtnetwork.com"</span>,{'\n'}      chainId: <span className="st">11211</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}  {'},'}{'\n'}{'};'}</pre>
+              <pre className="code-body"><span className="kw">module</span>.exports = {'{'}{'\n'}  solidity: <span className="st">"0.8.24"</span>,{'\n'}  networks: {'{'}{'\n'}    <span className="cm">// Mainnet — Chain ID 11311</span>{'\n'}    <span className="fn">exbeast</span>: {'{'}{'\n'}      url: <span className="st">"https://rpc.exbtnetwork.com/"</span>,{'\n'}      chainId: <span className="st">11311</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}    <span className="cm">// Testnet — Chain ID 11211</span>{'\n'}    <span className="fn">exbeastTestnet</span>: {'{'}{'\n'}      url: <span className="st">"https://testnet_rpc.exbtnetwork.com"</span>,{'\n'}      chainId: <span className="st">11211</span>,{'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],{'\n'}    {'},'}{'\n'}  {'},'}{'\n'}{'};'}</pre>
             </div>
             <div className="code-card" style={{ margin: '14px 0' }}>
               <div className="code-head">
@@ -139,7 +139,7 @@ export default function Docs() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>deploy</span>
               </div>
-              <pre className="code-body"><span className="st">$</span> npx hardhat run scripts/deploy.js <span className="kw">--network</span> exbotix{'\n'}<span className="cm">// ✓ Contract deployed to 0x9f… on Exbotix Mainnet</span>{'\n\n'}<span className="st">$</span> npx hardhat run scripts/deploy.js <span className="kw">--network</span> exbotixTestnet{'\n'}<span className="cm">// ✓ Contract deployed to 0x9f… on Exbotix Testnet</span></pre>
+              <pre className="code-body"><span className="st">$</span> npx hardhat run scripts/deploy.js <span className="kw">--network</span> exbeast{'\n'}<span className="cm">// ✓ Contract deployed to 0x9f… on ExBeast Mainnet</span>{'\n\n'}<span className="st">$</span> npx hardhat run scripts/deploy.js <span className="kw">--network</span> exbeastTestnet{'\n'}<span className="cm">// ✓ Contract deployed to 0x9f… on ExBeast Testnet</span></pre>
             </div>
 
             <h2 id="rpc">RPC methods</h2>

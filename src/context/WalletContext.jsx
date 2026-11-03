@@ -64,7 +64,7 @@ export const WalletProvider = ({ children }) => {
     return wallets;
   }, []);
 
-  const switchToExbotixMainnet = useCallback(async (currentChainId, currentProvider) => {
+  const switchToExBeastMainnet = useCallback(async (currentChainId, currentProvider) => {
     const mainnet = NETWORKS.mainnet;
     const activeChainId = currentChainId || chainId;
 
@@ -78,7 +78,7 @@ export const WalletProvider = ({ children }) => {
         params: [{ chainId: mainnet.chainId }],
       });
 
-      showToast("Switched to Exbotix Mainnet", "You're now on Chain ID 11311");
+      showToast("Switched to ExBeast Mainnet", "You're now on Chain ID 11311");
     } catch (switchError) {
       if (switchError.code === 4902) {
         try {
@@ -93,7 +93,7 @@ export const WalletProvider = ({ children }) => {
             }],
           });
 
-          showToast("Exbotix Mainnet added", "Network added to your wallet successfully");
+          showToast("ExBeast Mainnet added", "Network added to your wallet successfully");
         } catch (addError) {
           if (addError.code !== 4001) {
             showToast("Network not added", "You can add it manually from the docs page");
@@ -155,7 +155,7 @@ export const WalletProvider = ({ children }) => {
       }
 
       if (!silent) {
-        await switchToExbotixMainnet(newChainId, newProvider);
+        await switchToExBeastMainnet(newChainId, newProvider);
         showToast("Wallet connected", "Welcome to ExBeast — " + newAddress.slice(0, 6) + "…" + newAddress.slice(-4));
       }
 
@@ -166,7 +166,7 @@ export const WalletProvider = ({ children }) => {
       handleError("Connection failed", error);
       return null;
     }
-  }, [switchToExbotixMainnet, handleError]);
+  }, [switchToExBeastMainnet, handleError]);
 
   const addNetwork = useCallback(async (networkKey) => {
     const network = NETWORKS[networkKey];
@@ -228,7 +228,7 @@ export const WalletProvider = ({ children }) => {
     connected: !!address,
     connect,
     disconnect,
-    switchToExbotixMainnet,
+    switchToExBeastMainnet,
     addNetwork,
     detectWallets,
   };

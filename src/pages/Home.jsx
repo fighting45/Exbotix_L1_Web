@@ -220,15 +220,15 @@ export default function Home() {
                 <span className="d" style={{ background: '#28C840' }}></span>
                 <span className="mono" style={{ marginLeft: '8px', fontSize: '12px', color: 'var(--text-mute)' }}>hardhat.config.js</span>
               </div>
-              <pre className="code-body"><span className="cm">// Exbotix Mainnet · 11311  —  Testnet · 11211</span>
+              <pre className="code-body"><span className="cm">// ExBeast Mainnet · 11311  —  Testnet · 11211</span>
 {'\n'}<span className="kw">module</span>.exports = {'{'}
 {'\n'}  networks: {'{'}
-{'\n'}    <span className="fn">exbotix</span>: {'{'}           <span className="cm">// Mainnet</span>
+{'\n'}    <span className="fn">exbeast</span>: {'{'}           <span className="cm">// Mainnet</span>
 {'\n'}      url: <span className="st">"https://rpc.exbtnetwork.com/"</span>,
 {'\n'}      chainId: <span className="st">11311</span>,
 {'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],
 {'\n'}    {'},'}
-{'\n'}    <span className="fn">exbotixTestnet</span>: {'{'}    <span className="cm">// Testnet</span>
+{'\n'}    <span className="fn">exbeastTestnet</span>: {'{'}    <span className="cm">// Testnet</span>
 {'\n'}      url: <span className="st">"https://testnet_rpc.exbtnetwork.com"</span>,
 {'\n'}      chainId: <span className="st">11211</span>,
 {'\n'}      accounts: [process.env.<span className="fn">PRIVATE_KEY</span>],
@@ -237,7 +237,7 @@ export default function Home() {
 {'\n'}{'};'}
 {'\n'}
 {'\n'}<span className="cm">// Deploy as usual</span>
-{'\n'}<span className="st">$</span> npx hardhat run deploy.js <span className="kw">--network</span> exbotix</pre>
+{'\n'}<span className="st">$</span> npx hardhat run deploy.js <span className="kw">--network</span> exbeast</pre>
             </div>
           </Reveal>
         </div>
