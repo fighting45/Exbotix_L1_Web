@@ -30,8 +30,8 @@ export default function Community() {
           </Reveal>
           <Reveal delay={3}>
             <div className="hero-cta" style={{ justifyContent: 'center', marginTop: '26px' }}>
-              <a href="https://www.linkedin.com/company/exbotix/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Join LinkedIn</a>
-              <a href="https://x.com/exbotix" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Follow on X</a>
+              <a href="https://www.linkedin.com/company/exbeast/posts/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Join LinkedIn</a>
+              <a href="https://x.com/exbeastexchange" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Follow on X</a>
             </div>
           </Reveal>
         </div>
@@ -60,7 +60,7 @@ export default function Community() {
           </Reveal>
           <div className="grid cols-4">
             <Reveal delay={1}>
-              <a href="https://x.com/exbotix" target="_blank" rel="noopener noreferrer" className="card" style={{ padding: '28px', display: 'block' }}>
+              <a href="https://x.com/exbeastexchange" target="_blank" rel="noopener noreferrer" className="card" style={{ padding: '28px', display: 'block' }}>
                 <div className="eco-icon" style={{ width: '46px', height: '46px' }}>✕</div>
                 <h3 style={{ fontSize: '19px', marginTop: '16px' }}>X / Twitter</h3>
                 <p className="text-dim" style={{ fontSize: '14px', marginTop: '6px' }}>
@@ -69,7 +69,7 @@ export default function Community() {
               </a>
             </Reveal>
             <Reveal delay={2}>
-              <a href="https://www.linkedin.com/company/exbotix/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="card" style={{ padding: '28px', display: 'block' }}>
+              <a href="https://www.linkedin.com/company/exbeast/posts/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="card" style={{ padding: '28px', display: 'block' }}>
                 <div className="eco-icon" style={{ width: '46px', height: '46px' }}>◓</div>
                 <h3 style={{ fontSize: '19px', marginTop: '16px' }}>LinkedIn</h3>
                 <p className="text-dim" style={{ fontSize: '14px', marginTop: '6px' }}>
